@@ -1,20 +1,32 @@
 <ul class="nav nav-tabs">
   <li class="nav-item">
-    <a class="nav-link active"
-       href="#"
-       (click)="onSelectView('admin')">
-      Administrador</a>
+    <a
+      class="nav-link"
+      [class.active]="current === 'admin'"
+      href="#"
+      (click)="onSelectView('admin')"
+    >
+      Administrador</a
+    >
   </li>
   <li class="nav-item">
-    <a class="nav-link"
-       href="#"
-       (click)="onSelectView('producer')">
-      Proveedor</a>
+    <a
+      class="nav-link"
+      [class.active]="current === 'producer'"
+      href="#"
+      (click)="onSelectView('producer')"
+    >
+      Proveedor</a
+    >
   </li>
   <li class="nav-item">
-    <a class="nav-link"
-       href="#"
-       (click)="onSelectView('client')">
-      Cliente</a>
+    <a
+      class="nav-link"
+      [class.active]="current === 'client'"
+      href="#"
+      (click)="onSelectView('client')"
+    >
+      Cliente</a
+    >
   </li>
 </ul>
