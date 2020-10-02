@@ -10,7 +10,7 @@ import { Component } from '@angular/core';
 
 export class AppComponent {
   title = 'fv-front-end';
-  shownView;
+  shownView = 'admin';
 
   showView(view: string){
     this.shownView = view;
