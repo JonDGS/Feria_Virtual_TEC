@@ -9,13 +9,12 @@ export class HeaderComponent implements OnInit {
   @Output() viewSelected = new EventEmitter<string>();
 
   constructor() {}
-  current = 'admin';
-  isActivate = false;
+  currentActivate = 'admin';
 
   ngOnInit(): void {}
 
   onSelectView(view: string) {
     this.viewSelected.emit(view);
-    this.current = view;
+    this.currentActivate = view;
   }
 }

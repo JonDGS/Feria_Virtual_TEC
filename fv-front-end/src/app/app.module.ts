@@ -10,9 +10,9 @@ import { ProducerManagementComponent } from './admin-view/producer-management/pr
 import { ProducerListComponent } from './admin-view/producer-management/producer-list/producer-list.component';
 import { ProducerDetailsComponent } from './admin-view/producer-management/producer-details/producer-details.component';
 import { ProducerItemComponent } from './admin-view/producer-management/producer-list/producer-item/producer-item.component';
-import { CategorieManagementComponent } from './admin-view/categorie-management/categorie-management.component';
-import { CategorieListComponent } from './admin-view/categorie-management/categorie-list/categorie-list.component';
-import { CategorieEditComponent } from './admin-view/categorie-management/categorie-edit/categorie-edit.component';
+
+import { FormProducerComponent } from './producer-view/form-producer/form-producer.component';
+import { ServerService } from './server.service';
 
 @NgModule({
   declarations: [
@@ -25,14 +25,10 @@ import { CategorieEditComponent } from './admin-view/categorie-management/catego
     ProducerListComponent,
     ProducerDetailsComponent,
     ProducerItemComponent,
-    CategorieManagementComponent,
-    CategorieListComponent,
-    CategorieEditComponent
+    FormProducerComponent,
   ],
-  imports: [
-    BrowserModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+  imports: [BrowserModule],
+  providers: [ServerService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
