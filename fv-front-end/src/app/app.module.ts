@@ -6,6 +6,8 @@ import { HeaderComponent } from './header/header.component';
 import { AdminViewComponent } from './admin-view/admin-view.component';
 import { ProducerViewComponent } from './producer-view/producer-view.component';
 import { ClientViewComponent } from './client-view/client-view.component';
+import { FormProducerComponent } from './producer-view/form-producer/form-producer.component';
+import { ServerService } from './server.service';
 
 @NgModule({
   declarations: [
@@ -13,12 +15,11 @@ import { ClientViewComponent } from './client-view/client-view.component';
     HeaderComponent,
     AdminViewComponent,
     ProducerViewComponent,
-    ClientViewComponent
+    ClientViewComponent,
+    FormProducerComponent,
   ],
-  imports: [
-    BrowserModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+  imports: [BrowserModule],
+  providers: [ServerService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
