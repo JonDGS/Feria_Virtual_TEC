@@ -13,6 +13,12 @@ import { ProducerItemComponent } from './admin-view/producer-management/producer
 
 import { FormProducerComponent } from './producer-view/form-producer/form-producer.component';
 import { ServerService } from './server.service';
+import { CategoryManagementComponent } from './admin-view/category-management/category-management.component';
+import { CategoryListComponent } from './admin-view/category-management/category-list/category-list.component';
+import { CategoryEditComponent } from './admin-view/category-management/category-list-changes/category-edit/category-edit.component';
+import { CategoryListChangesComponent } from './admin-view/category-management/category-list-changes/category-list-changes.component';
+import { CategoryCreateComponent } from './admin-view/category-management/category-list-changes/category-create/category-create.component';
+
 
 @NgModule({
   declarations: [
@@ -26,6 +32,11 @@ import { ServerService } from './server.service';
     ProducerDetailsComponent,
     ProducerItemComponent,
     FormProducerComponent,
+    CategoryManagementComponent,
+    CategoryListComponent,
+    CategoryEditComponent,
+    CategoryListChangesComponent,
+    CategoryCreateComponent
   ],
   imports: [BrowserModule],
   providers: [ServerService],
