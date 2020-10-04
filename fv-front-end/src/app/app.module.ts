@@ -10,9 +10,12 @@ import { ProducerManagementComponent } from './admin-view/producer-management/pr
 import { ProducerListComponent } from './admin-view/producer-management/producer-list/producer-list.component';
 import { ProducerDetailsComponent } from './admin-view/producer-management/producer-details/producer-details.component';
 import { ProducerItemComponent } from './admin-view/producer-management/producer-list/producer-item/producer-item.component';
-import { CategorieManagementComponent } from './admin-view/categorie-management/categorie-management.component';
-import { CategorieListComponent } from './admin-view/categorie-management/categorie-list/categorie-list.component';
-import { CategorieEditComponent } from './admin-view/categorie-management/categorie-edit/categorie-edit.component';
+import { CategoryManagementComponent } from './admin-view/category-management/category-management.component';
+import { CategoryListComponent } from './admin-view/category-management/category-list/category-list.component';
+import { CategoryEditComponent } from './admin-view/category-management/category-list-changes/category-edit/category-edit.component';
+import { CategoryListChangesComponent } from './admin-view/category-management/category-list-changes/category-list-changes.component';
+import { CategoryCreateComponent } from './admin-view/category-management/category-list-changes/category-create/category-create.component';
+
 
 @NgModule({
   declarations: [
@@ -25,9 +28,11 @@ import { CategorieEditComponent } from './admin-view/categorie-management/catego
     ProducerListComponent,
     ProducerDetailsComponent,
     ProducerItemComponent,
-    CategorieManagementComponent,
-    CategorieListComponent,
-    CategorieEditComponent
+    CategoryManagementComponent,
+    CategoryListComponent,
+    CategoryEditComponent,
+    CategoryListChangesComponent,
+    CategoryCreateComponent
   ],
   imports: [
     BrowserModule
