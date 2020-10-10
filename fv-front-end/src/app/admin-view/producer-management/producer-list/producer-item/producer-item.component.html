@@ -1,1 +1,8 @@
-<p>producer-item works!</p>
+<a href="#"
+   class="list-group-item clearfix"
+   (click)="onSelected()">
+  <div>
+    <h4 class="list-group-item-heading">{{ producer.name }} {{producer.lastName}}</h4>
+    <p class="list-group-item-text">{{ producer.id }} {{ producer.address }}</p>
+  </div>
+</a>

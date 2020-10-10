@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Producer} from '../../../models/producer.model';
+import {ServerService} from '../../../server.service';
 
 @Component({
   selector: 'app-producer-details',
@@ -6,10 +8,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./producer-details.component.css']
 })
 export class ProducerDetailsComponent implements OnInit {
+  @Input() producer: Producer;
 
   constructor() { }
 
   ngOnInit(): void {
   }
-
 }
