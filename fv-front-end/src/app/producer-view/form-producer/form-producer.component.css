@@ -1,5 +1,12 @@
 .form-producer {
-  max-width: 500px;
-  margin: auto;
-  margin-top: 40px;
+  max-width: 60%;
+  margin: 0 auto;
+  text-align: center;
+}
+h1 {
+  padding: 5%;
+}
+
+.btn {
+  margin: 10px;
 }

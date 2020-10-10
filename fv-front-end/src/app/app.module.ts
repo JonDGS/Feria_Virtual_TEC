@@ -18,7 +18,8 @@ import { CategoryListComponent } from './admin-view/category-management/category
 import { CategoryEditComponent } from './admin-view/category-management/category-list-changes/category-edit/category-edit.component';
 import { CategoryListChangesComponent } from './admin-view/category-management/category-list-changes/category-list-changes.component';
 import { CategoryCreateComponent } from './admin-view/category-management/category-list-changes/category-create/category-create.component';
-
+import { LoginProducerComponent } from './producer-view/login-producer/login-producer.component';
+import { SelectorComponent } from './producer-view/selector/selector.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,9 @@ import { CategoryCreateComponent } from './admin-view/category-management/catego
     CategoryListComponent,
     CategoryEditComponent,
     CategoryListChangesComponent,
-    CategoryCreateComponent
+    CategoryCreateComponent,
+    LoginProducerComponent,
+    SelectorComponent,
   ],
   imports: [BrowserModule],
   providers: [ServerService],

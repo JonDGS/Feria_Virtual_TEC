@@ -1,0 +1,17 @@
+<div class="selector-buttons">
+  <div class="row">
+    <div class="col">
+      <button class="btn btn-primary" (click)="onSelectView('login')">
+        <i class="fas fa-user-tie"> Iniciar sesion</i>
+      </button>
+    </div>
+    <div class="col">
+      <button class="btn btn-primary" (click)="onSelectView('form')">
+        <i class="fab fa-wpforms"> Enviar solicitud</i>
+      </button>
+    </div>
+  </div>
+</div>
+
+<login-producer *ngIf="currentActivate === 'login'"></login-producer>
+<form-producer *ngIf="currentActivate === 'form'"></form-producer>
