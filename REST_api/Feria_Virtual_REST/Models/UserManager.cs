@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Ajax.Utilities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -14,6 +15,7 @@ namespace Feria_Virtual_REST.Models
         public static void registerUser(User newUser)
         {
             registerUsers.AddLast(newUser);
+            //Save the data in json file
         }
 
         public static bool validateCredentials(string username, string email, string password)
@@ -37,6 +39,11 @@ namespace Feria_Virtual_REST.Models
         public static void retrieveUsers()
         {
             //retrieve users from JSON
+        }
+
+        public static LinkedList<User> getUsers()
+        {
+            return registerUsers;
         }
     }
 }
