@@ -19,5 +19,15 @@ namespace Feria_Virtual_REST.Models
             this.email = email;
             this.passwordHash = HashComputer.GetHashString(password);
         }
+
+        public string getUsername()
+        {
+            return this.username;
+        }
+
+        public string getEmail()
+        {
+            return this.email;
+        }
     }
 }

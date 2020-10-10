@@ -1,7 +1,5 @@
 E:\OneDriveTEC\OneDrive - Estudiantes ITCR\GITHUB\Feria_Virtual_TEC\REST_api\Feria_Virtual_REST\obj\Debug\Feria_Virtual_REST.csprojAssemblyReference.cache
 E:\OneDriveTEC\OneDrive - Estudiantes ITCR\GITHUB\Feria_Virtual_TEC\REST_api\Feria_Virtual_REST\obj\Debug\Feria_Virtual_REST.csproj.CoreCompileInputs.cache
-E:\OneDriveTEC\OneDrive - Estudiantes ITCR\GITHUB\Feria_Virtual_TEC\REST_api\Feria_Virtual_REST\bin\Feria_Virtual_REST.exe.config
-E:\OneDriveTEC\OneDrive - Estudiantes ITCR\GITHUB\Feria_Virtual_TEC\REST_api\Feria_Virtual_REST\bin\Feria_Virtual_REST.exe
 E:\OneDriveTEC\OneDrive - Estudiantes ITCR\GITHUB\Feria_Virtual_TEC\REST_api\Feria_Virtual_REST\bin\Feria_Virtual_REST.pdb
 E:\OneDriveTEC\OneDrive - Estudiantes ITCR\GITHUB\Feria_Virtual_TEC\REST_api\Feria_Virtual_REST\bin\roslyn\csc.exe
 E:\OneDriveTEC\OneDrive - Estudiantes ITCR\GITHUB\Feria_Virtual_TEC\REST_api\Feria_Virtual_REST\bin\roslyn\csc.exe.config
@@ -81,5 +79,7 @@ E:\OneDriveTEC\OneDrive - Estudiantes ITCR\GITHUB\Feria_Virtual_TEC\REST_api\Fer
 E:\OneDriveTEC\OneDrive - Estudiantes ITCR\GITHUB\Feria_Virtual_TEC\REST_api\Feria_Virtual_REST\bin\Antlr3.Runtime.pdb
 E:\OneDriveTEC\OneDrive - Estudiantes ITCR\GITHUB\Feria_Virtual_TEC\REST_api\Feria_Virtual_REST\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 E:\OneDriveTEC\OneDrive - Estudiantes ITCR\GITHUB\Feria_Virtual_TEC\REST_api\Feria_Virtual_REST\obj\Debug\Feria_Virtual_REST.csproj.CopyComplete
-E:\OneDriveTEC\OneDrive - Estudiantes ITCR\GITHUB\Feria_Virtual_TEC\REST_api\Feria_Virtual_REST\obj\Debug\Feria_Virtual_REST.exe
 E:\OneDriveTEC\OneDrive - Estudiantes ITCR\GITHUB\Feria_Virtual_TEC\REST_api\Feria_Virtual_REST\obj\Debug\Feria_Virtual_REST.pdb
+E:\OneDriveTEC\OneDrive - Estudiantes ITCR\GITHUB\Feria_Virtual_TEC\REST_api\Feria_Virtual_REST\bin\Feria_Virtual_REST.dll.config
+E:\OneDriveTEC\OneDrive - Estudiantes ITCR\GITHUB\Feria_Virtual_TEC\REST_api\Feria_Virtual_REST\bin\Feria_Virtual_REST.dll
+E:\OneDriveTEC\OneDrive - Estudiantes ITCR\GITHUB\Feria_Virtual_TEC\REST_api\Feria_Virtual_REST\obj\Debug\Feria_Virtual_REST.dll
