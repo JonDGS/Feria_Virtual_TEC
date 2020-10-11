@@ -22,7 +22,7 @@ namespace Feria_Virtual_REST.Models
             UserManager.registerUser(clientTest);
             UserManager.registerUser(sellerTest);
 
-            JsonSerializer.saveUsers(UserManager.getUsers());
+            JsonManager.saveUsers(UserManager.getUsers());
 
         }
     }

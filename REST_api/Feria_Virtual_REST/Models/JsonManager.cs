@@ -1,5 +1,6 @@
 ﻿using Microsoft.SqlServer.Server;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -23,7 +24,7 @@ using System.Web;
 
 namespace Feria_Virtual_REST.Models
 {
-    public static class JsonSerializer
+    public static class JsonManager
     {
 
         private static string pathToProjectAdmin = "E:/OneDriveTEC/OneDrive - Estudiantes ITCR/GITHUB/Feria_Virtual_TEC/REST_api/Database/admins.json";
@@ -76,9 +77,10 @@ namespace Feria_Virtual_REST.Models
 
         public static LinkedList<User> retrieveUsers()
         {
-            List<Admin> listAdmins = JsonConvert.DeserializeObject<List<Admin>>(@pathToProjectAdmin);
-            List<Client> listClients = JsonConvert.DeserializeObject<List<Client>>(@pathToProjectClient);
-            List<Seller> listSellers = JsonConvert.DeserializeObject<List<Seller>>(@pathToProjectSeller);
+            
+            List<Admin> listAdmins = JsonConvert.DeserializeObject<List<Admin>>(File.ReadAllText(@pathToProjectAdmin));
+            List<Client> listClients = JsonConvert.DeserializeObject<List<Client>>(File.ReadAllText(@pathToProjectClient));
+            List<Seller> listSellers = JsonConvert.DeserializeObject<List<Seller>>(File.ReadAllText(@pathToProjectSeller));
 
             LinkedList<User> tempUsers = new LinkedList<User>();
 

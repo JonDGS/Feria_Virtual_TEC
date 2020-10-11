@@ -17,7 +17,7 @@ namespace Feria_Virtual_REST.Models
         {
             this.username = username;
             this.email = email;
-            this.passwordHash = HashComputer.GetHashString(password);
+            this.passwordHash = password;
         }
 
         public string getUsername()
@@ -28,6 +28,11 @@ namespace Feria_Virtual_REST.Models
         public string getEmail()
         {
             return this.email;
+        }
+
+        public string getType()
+        {
+            return this.type;
         }
     }
 }

@@ -1,8 +1,10 @@
 ﻿using Microsoft.Ajax.Utilities;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading;
 using System.Web;
 using System.Web.UI.WebControls;
@@ -11,7 +13,7 @@ namespace Feria_Virtual_REST.Models
 {
     public static class UserManager
     {
-        private static LinkedList<User> registerUsers = new LinkedList<User>();
+        private static LinkedList<User> registerUsers = JsonManager.retrieveUsers();
 
         /*
          * Registers a user in the database
@@ -21,7 +23,7 @@ namespace Feria_Virtual_REST.Models
         public static void registerUser(User newUser)
         {
             registerUsers.AddLast(newUser);
-            JsonSerializer.saveUsers(registerUsers);
+            JsonManager.saveUsers(registerUsers);
         }
 
         /*
@@ -84,5 +86,23 @@ namespace Feria_Virtual_REST.Models
 
             return true;
         }
+
+
+        public static bool doesUsernameMatchesType(string username, string type)
+        {
+            foreach(User user in registerUsers)
+            {
+                if (user.getUsername().Equals(username))
+                {
+                    if (user.getType().Equals(type))
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
+
     }
 }
