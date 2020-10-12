@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./selector.component.css'],
 })
 export class SelectorComponent {
-  currentActivate = 'login';
+  currentActivate = 'producer-users';
   constructor() {}
 
   onSelectView(view: string) {
