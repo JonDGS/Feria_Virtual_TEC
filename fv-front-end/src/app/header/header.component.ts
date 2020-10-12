@@ -9,7 +9,7 @@ export class HeaderComponent implements OnInit {
   @Output() viewSelected = new EventEmitter<string>();
 
   constructor() {}
-  currentActivate = 'admin';
+  currentActivate = 'producer';
 
   ngOnInit(): void {}
 
