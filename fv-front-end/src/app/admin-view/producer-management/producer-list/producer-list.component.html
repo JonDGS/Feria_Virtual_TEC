@@ -1,1 +1,7 @@
-<p>producer-list works!</p>
+<div class="row">
+  <div class="col">
+    <app-producer-item
+      *ngFor="let producerElement of producers"
+      [producer]="producerElement"></app-producer-item>
+  </div>
+</div>
