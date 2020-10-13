@@ -11,7 +11,7 @@ namespace Feria_Virtual_REST.Controllers
     public class LogInController : ApiController
     {
         // POST: api/LogIn/
-       public HttpResponseMessage logInCredencials([FromUri] string user, [FromUri] string email, [FromUri] string password, [FromUri] string type)
+       public HttpResponseMessage logInCredencials([FromUri] string user, [FromUri] string email, [FromUri] string password)
         {
             if(UserManager.validateCredentials(user, email, password))
             {

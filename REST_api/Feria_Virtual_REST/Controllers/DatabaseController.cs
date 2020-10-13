@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Web;
 using System.Web.Http;
 
 namespace Feria_Virtual_REST.Controllers
@@ -12,8 +13,11 @@ namespace Feria_Virtual_REST.Controllers
     public class DatabaseController : ApiController
     {
         [Route("api/Database/{who}")]
-        public HttpResponseMessage getAllUsers([FromBody] string token, string who)
+        public HttpResponseMessage getAllUsers(string who)
         {
+
+            string token = HttpContext.Current.Request.Params["token"];
+
             if (UserManager.doesUsernameMatchesType(TokenManager.getUsernameFromToken(token), "Admin"))
             {
                 switch (who)
