@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Producer} from '../../../../models/producer.model';
+import {ServerService} from '../../../../server.service';
 
 @Component({
   selector: 'app-producer-item',
@@ -6,10 +8,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./producer-item.component.css']
 })
 export class ProducerItemComponent implements OnInit {
+  @Input() producer: Producer;
 
-  constructor() { }
+  constructor(private serverService: ServerService) { }
 
   ngOnInit(): void {
   }
 
+  onSelected(){
+    this.serverService.producerSelected.emit(this.producer);
+  }
 }

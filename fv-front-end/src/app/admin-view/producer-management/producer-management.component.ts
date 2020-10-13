@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Producer} from '../../models/producer.model';
+import {ServerService} from '../../server.service';
 
 @Component({
   selector: 'app-producer-management',
@@ -6,10 +8,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./producer-management.component.css']
 })
 export class ProducerManagementComponent implements OnInit {
+  selectedProducer: Producer;
 
-  constructor() { }
+  constructor(private serverService: ServerService) { }
 
   ngOnInit(): void {
+    this.serverService.producerSelected.subscribe(
+      (producer: Producer) => {
+        this.selectedProducer = producer;
+      }
+    );
   }
 
 }

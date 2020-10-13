@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {ServerService} from '../../../server.service';
+import {Category} from '../../../models/category.model';
 
 @Component({
   selector: 'app-category-list',
@@ -6,10 +8,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./category-list.component.css']
 })
 export class CategoryListComponent implements OnInit {
+  public categoryL: Category[] = [];
 
-  constructor() { }
+  constructor(private serverService: ServerService) { }
 
   ngOnInit(): void {
+    this.categoryL = this.serverService.categoryList;
   }
 
 }
