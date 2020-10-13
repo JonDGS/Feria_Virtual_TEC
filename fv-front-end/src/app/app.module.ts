@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { AdminViewComponent } from './admin-view/admin-view.component';
@@ -45,7 +45,9 @@ import { ZippyComponent } from './producer-view/zippy/zippy.component';
     PViewComponent,
     ZippyComponent,
   ],
-  imports: [BrowserModule],
+  imports: [BrowserModule,
+    HttpClientModule
+    ],
   providers: [ServerService],
   bootstrap: [AppComponent],
 })

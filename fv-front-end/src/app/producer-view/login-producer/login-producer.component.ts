@@ -1,3 +1,4 @@
+import { ServerService } from './../../server.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,7 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login-producer.component.css'],
 })
 export class LoginProducerComponent implements OnInit {
-  constructor() {}
+  constructor(private server: ServerService) {}
 
   ngOnInit(): void {}
+
+  login(){
+
+    console.log("log in")
+    this.server.testGet()
+  }
 }
