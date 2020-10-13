@@ -1,0 +1,35 @@
+
+<form>
+  <!--Input name of the new product-->
+  <div class="form-group">
+    <label for="productName">Nombre del producto</label>
+    <input type="text" class="form-control" id="productName" placeholder="Lechuga">
+  </div>
+  <!--Input image of the new product-->
+  <div class="form-group">
+    <label for="productImage">Imagen del producto</label>
+    <div class="file-field">
+      <div class="btn btn-primary btn-sm float-left" id="productImage">
+        <input type="file">
+      </div>
+    </div>
+  </div>
+  <br>
+  <!--Input price of the new product-->
+  <div class="form-group">
+    <label for="productPrice">Precio del producto</label>
+    <input type="number" class="form-control" id="productPrice" placeholder="1000">
+  </div>
+  <!--Input product selling type-->
+  <div class="form-group">
+    <label for="productSellingType">Unidad de venta</label>
+    <input type="text" class="form-control" id="productSellingType" placeholder="Kilo, Unidad, Paquete, etc">
+  </div>
+  <!--Input product availability-->
+  <div class="form-group">
+    <label for="productAvailability">Disponibilidad del producto</label>
+    <input type="number" class="form-control" id="productAvailability" placeholder="10">
+  </div>
+
+  <button class="btn btn-success" type="submit">Añadir</button>
+</form>
