@@ -15,5 +15,4 @@ export class EditProductComponent implements OnInit {
   ngOnInit(): void {
     this.product = new Product('papas', new Category('verduras', 6), '', 800, 'kg', 100);
   }
-
 }
