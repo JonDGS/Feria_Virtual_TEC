@@ -1,1 +1,1 @@
-[]
+[{"cedula":"111111111","realName":"Pepe","lastName1":"DeVilla","lastName2":"Solis","address":{"provincia":"Cartago","canton":"Cartago","distrito":"Central"},"dateOfBirth":{"month":1,"day":1,"year":1960},"phoneNumber":"88888888","sinpe":"88888888","lugarDeEntrega":"Lugar","username":"DonPepe","email":"pepe@server.com","passwordHash":"974A2BE4C0F6DB85C78778E367E905F6F4C1B3524505872ADE3DDAE1D9EF43B8","type":"Seller"}]

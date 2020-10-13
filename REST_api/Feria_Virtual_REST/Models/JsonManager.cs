@@ -84,23 +84,65 @@ namespace Feria_Virtual_REST.Models
 
             LinkedList<User> tempUsers = new LinkedList<User>();
 
-            foreach(User user in listAdmins)
+            if(listAdmins is List<Admin>)
             {
-                tempUsers.AddLast(user);
+                foreach (User user in listAdmins)
+                {
+                    tempUsers.AddLast(user);
+                }
             }
 
-            foreach (User user in listClients)
+            if (listClients is List<Client>)
             {
-                tempUsers.AddLast(user);
+                foreach (User user in listClients)
+                {
+                    tempUsers.AddLast(user);
+                }
             }
 
-            foreach (User user in listSellers)
+            if (listSellers is List<Seller>)
             {
-                tempUsers.AddLast(user);
+                foreach (User user in listSellers)
+                {
+                    tempUsers.AddLast(user);
+                }
             }
 
             return tempUsers;
 
+        }
+
+        public static List<Seller> getSellers()
+        {
+            List<Seller> sellers = JsonConvert.DeserializeObject<List<Seller>>(File.ReadAllText(@pathToProjectSeller));
+
+            if(sellers is List<Seller>)
+            {
+                return sellers;
+            }
+
+            return null;
+        }
+
+        public static string getSellersJSON_String()
+        {
+            string sellers = File.ReadAllText(@pathToProjectSeller);
+
+            return sellers;
+        }
+
+        public static string getClientsJSON_String()
+        {
+            string clients = File.ReadAllText(@pathToProjectClient);
+
+            return clients;
+        }
+
+        public static string getAdminJSON_String()
+        {
+            string admins = File.ReadAllText(@pathToProjectAdmin);
+
+            return admins;
         }
     }
 }

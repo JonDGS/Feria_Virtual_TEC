@@ -11,21 +11,33 @@ namespace Feria_Virtual_REST.Controllers
 {
     public class DatabaseController : ApiController
     {
-        // GET: api/Database
-        public HttpResponseMessage Get([FromBody]string token)
+        [Route("api/Database/{who}")]
+        public HttpResponseMessage getAllUsers([FromBody] string token, string who)
         {
-            if(UserManager.doesUsernameMatchesType(TokenManager.getUsernameFromToken(token), "Admin"))
+            if (UserManager.doesUsernameMatchesType(TokenManager.getUsernameFromToken(token), "Admin"))
             {
-                LinkedList<User> tempList = JsonManager.retrieveUsers();
-
-                List<User> resultList = new List<User>();
-                
-                foreach(User user in tempList)
+                switch (who)
                 {
-                    resultList.Add(user);
-                }
+                    case "All":
+                        LinkedList<User> tempList = JsonManager.retrieveUsers();
 
-                return Request.CreateResponse(HttpStatusCode.OK, JsonConvert.SerializeObject(resultList));
+                        List<User> allUsersList = new List<User>();
+
+                        foreach (User user in tempList)
+                        {
+                            allUsersList.Add(user);
+                        }
+
+                        return Request.CreateResponse(HttpStatusCode.OK, JsonConvert.SerializeObject(allUsersList));
+                    case "Sellers":
+                        return Request.CreateResponse(HttpStatusCode.OK, JsonManager.getSellersJSON_String());
+                    case "Clients":
+                        return Request.CreateResponse(HttpStatusCode.OK, JsonManager.getClientsJSON_String());
+                    case "Admins":
+                        return Request.CreateResponse(HttpStatusCode.OK, JsonManager.getAdminJSON_String());
+                    default:
+                        return Request.CreateResponse(HttpStatusCode.BadRequest);
+                }
 
             }
 
@@ -33,25 +45,7 @@ namespace Feria_Virtual_REST.Controllers
 
         }
 
-        // GET: api/Database/5
-        public string Get(int id)
-        {
-            return "value";
-        }
 
-        // POST: api/Database
-        public void Post([FromBody]string value)
-        {
-        }
 
-        // PUT: api/Database/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE: api/Database/5
-        public void Delete(int id)
-        {
-        }
     }
 }
