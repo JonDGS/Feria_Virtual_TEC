@@ -22,6 +22,9 @@ import { LoginProducerComponent } from './producer-view/login-producer/login-pro
 import { SelectorComponent } from './producer-view/selector/selector.component';
 import { PViewComponent } from './producer-view/p-view/p-view.component';
 import { ZippyComponent } from './producer-view/zippy/zippy.component';
+import { ClientFormComponent } from './client-view/client-form/client-form.component';
+import { ClientLogInComponent } from './client-view/client-log-in/client-log-in.component';
+import { ClientSelectorComponent } from './client-view/client-selector/client-selector.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +47,9 @@ import { ZippyComponent } from './producer-view/zippy/zippy.component';
     SelectorComponent,
     PViewComponent,
     ZippyComponent,
+    ClientFormComponent,
+    ClientLogInComponent,
+    ClientSelectorComponent,
   ],
   imports: [BrowserModule],
   providers: [ServerService],

@@ -5,11 +5,9 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './client-view.component.html',
   styleUrls: ['./client-view.component.css']
 })
-export class ClientViewComponent implements OnInit {
+export class ClientViewComponent  {
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
 
 }
