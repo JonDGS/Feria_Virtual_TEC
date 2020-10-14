@@ -51,16 +51,17 @@ namespace Feria_Virtual_REST.Models
             return false;
         }
 
-        public static void retrieveUsers()
-        {
-            //retrieve users from JSON
-        }
-
         public static LinkedList<User> getUsers()
         {
             return registerUsers;
         }
 
+        /**
+         * Description: Checks whether or not a username is available
+         * Parameters:
+         * - user: user
+         * Return: bool whether or not it is available
+         */
         public static bool checkUserAvailability(string user)
         {
             foreach(User currentUser in registerUsers)
@@ -74,6 +75,12 @@ namespace Feria_Virtual_REST.Models
             return true;
         }
 
+        /**
+         * Description: Checks whether or not an email is available
+         * Parameters:
+         * - email: email
+         * Return: bool whether or not it is available
+         */
         public static bool checkEmailAvailability(string email)
         {
             foreach (User currentUser in registerUsers)
@@ -88,6 +95,13 @@ namespace Feria_Virtual_REST.Models
         }
 
 
+        /**
+         * Description: Matches username to a type of user
+         * Parameters:
+         * - username: username
+         * - type: type
+         * Return: bool did it match type
+         */
         public static bool doesUsernameMatchesType(string username, string type)
         {
             foreach(User user in registerUsers)
@@ -104,6 +118,12 @@ namespace Feria_Virtual_REST.Models
             return false;
         }
 
+        /**
+         * Description: Retrives a type by username
+         * Parameters:
+         * - user: user
+         * Return: string of the type of user
+         */
         public static string getTypeByUsername(string user)
         {
             if (!checkUserAvailability(user))
@@ -120,6 +140,7 @@ namespace Feria_Virtual_REST.Models
             return null;
         }
 
+        
         public static User getUser(string user)
         {
             foreach(User currentUser in registerUsers)
@@ -133,6 +154,14 @@ namespace Feria_Virtual_REST.Models
             return null;
         }
 
+        /**
+         * Description: Modifies a given attribute in a given user
+         * Parameters:
+         * - username: username
+         * - attribute: attribute
+         * - value: value
+         * Return: bool whether or not the change was made
+         */
         public static bool modifyAttribute(string username, string attribute, string value)
         {
             User currentUser = getUser(username);
