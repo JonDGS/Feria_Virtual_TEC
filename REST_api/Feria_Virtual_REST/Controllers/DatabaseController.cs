@@ -71,7 +71,7 @@ namespace Feria_Virtual_REST.Controllers
             if (UserManager.doesUsernameMatchesType(TokenManager.getUsernameFromToken(token), "Seller"))
             {
 
-                Product newProduct = new Product(pName, category, price, packageMode,availability);
+                Product newProduct = new Product(pName, category, price, packageMode, availability);
 
                 ProductManager.registerProduct(newProduct);
 
@@ -83,6 +83,24 @@ namespace Feria_Virtual_REST.Controllers
 
         }
 
+
+        [Route("api/Database/Modify/{user}/{attribute}")]
+        public HttpResponseMessage modifyUser(string user, string attribute, [FromUri]string value, [FromUri]string token)
+        {
+            if (UserManager.doesUsernameMatchesType(TokenManager.getUsernameFromToken(token), "Admin"))
+            {
+                if (UserManager.modifyAttribute(user, attribute, value))
+                {
+                    return Request.CreateResponse(HttpStatusCode.Accepted);
+                }
+
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "User or attribute not found");
+
+            }
+
+            return Request.CreateResponse(HttpStatusCode.Unauthorized);
+
+        }
 
 
     }
