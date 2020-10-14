@@ -14,23 +14,32 @@ using System.Web;
  * D:/OneDrive TEC/OneDrive - Estudiantes ITCR/GITHUB/Feria_Virtual_TEC/REST_api/Database/admins.json
  * D:/OneDrive TEC/OneDrive - Estudiantes ITCR/GITHUB/Feria_Virtual_TEC/REST_api/Database/clients.json
  * D:/OneDrive TEC/OneDrive - Estudiantes ITCR/GITHUB/Feria_Virtual_TEC/REST_api/Database/sellers.json
+ * D:/OneDrive TEC/OneDrive - Estudiantes ITCR/GITHUB/Feria_Virtual_TEC/REST_api/Database/products.json
  */
 
 /* Desktop
  * E:/OneDriveTEC/OneDrive - Estudiantes ITCR/GITHUB/Feria_Virtual_TEC/REST_api/Database/admins.json
  * E:/OneDriveTEC/OneDrive - Estudiantes ITCR/GITHUB/Feria_Virtual_TEC/REST_api/Database/clients.json
  * E:/OneDriveTEC/OneDrive - Estudiantes ITCR/GITHUB/Feria_Virtual_TEC/REST_api/Database/sellers.json
+ * E:/OneDriveTEC/OneDrive - Estudiantes ITCR/GITHUB/Feria_Virtual_TEC/REST_api/Database/products.json
  */
+
+/*
+ * C:/Users/SMZ19/OneDrive/Documentos/GitHub/Feria_Virtual_TEC/REST_api/Database/admins.json    
+ * C:/Users/SMZ19/OneDrive/Documentos/GitHub/Feria_Virtual_TEC/REST_api/Database/clients.json   
+ * C:/Users/SMZ19/OneDrive/Documentos/GitHub/Feria_Virtual_TEC/REST_api/Database/sellers.json
+ * C:/Users/SMZ19/OneDrive/Documentos/GitHub/Feria_Virtual_TEC/REST_api/Database/products.json
+*/
 
 namespace Feria_Virtual_REST.Models
 {
     public static class JsonManager
     {
 
-        private static string pathToProjectAdmin = "E:/OneDriveTEC/OneDrive - Estudiantes ITCR/GITHUB/Feria_Virtual_TEC/REST_api/Database/admins.json";
-        private static string pathToProjectClient = "E:/OneDriveTEC/OneDrive - Estudiantes ITCR/GITHUB/Feria_Virtual_TEC/REST_api/Database/clients.json";
-        private static string pathToProjectSeller = "E:/OneDriveTEC/OneDrive - Estudiantes ITCR/GITHUB/Feria_Virtual_TEC/REST_api/Database/sellers.json";
-
+        private static string pathToProjectAdmin = "C:/Users/SMZ19/OneDrive/Documentos/GitHub/Feria_Virtual_TEC/REST_api/Database/admins.json";
+        private static string pathToProjectClient = "C:/Users/SMZ19/OneDrive/Documentos/GitHub/Feria_Virtual_TEC/REST_api/Database/clients.json";
+        private static string pathToProjectSeller = "C:/Users/SMZ19/OneDrive/Documentos/GitHub/Feria_Virtual_TEC/REST_api/Database/sellers.json";
+        private static string pathToProjectProduct = "C:/Users/SMZ19/OneDrive/Documentos/GitHub/Feria_Virtual_TEC/REST_api/Database/products.json";
         public static void saveUsers(LinkedList<User> users)
         {
             List<Admin> listAdmins = new List<Admin>();
@@ -74,6 +83,20 @@ namespace Feria_Virtual_REST.Models
             File.WriteAllText(@pathToProjectSeller, resultJsonSellers);
 
         }
+        /*
+        * Description: Serialize the product data and save it to DB
+        * Parameters: Linked list that contains all the products
+        * Return: none
+        */
+        public static void saveProduct(LinkedList<Product> products) {
+            List<Product> listProducts = new List<Product>();
+
+            foreach (Product product in products) {
+                listProducts.Add(product);
+            }
+            string resultJsonProducts = JsonConvert.SerializeObject(listProducts);
+            File.WriteAllText(pathToProjectProduct, resultJsonProducts);
+        }
 
         public static LinkedList<User> retrieveUsers()
         {
@@ -111,6 +134,28 @@ namespace Feria_Virtual_REST.Models
             return tempUsers;
 
         }
+        /*
+        * Description: Retrieve the products form DB
+        * Parameters: None
+        * Return: All the products loaded in DB
+        */
+        public static LinkedList<Product> retrieveProducts()
+        {
+
+            List<Product> listProducts = JsonConvert.DeserializeObject<List<Product>>(File.ReadAllText(@pathToProjectProduct));
+            if (listProducts is List<Product>) {
+                LinkedList<Product> tempProducts = new LinkedList<Product>();
+
+                foreach (Product product in listProducts)
+                {
+                    tempProducts.AddLast(product);
+
+                }
+
+                return tempProducts;
+            }
+            return new LinkedList<Product>();
+        }
 
         public static List<Seller> getSellers()
         {
@@ -141,6 +186,13 @@ namespace Feria_Virtual_REST.Models
         public static string getAdminJSON_String()
         {
             string admins = File.ReadAllText(@pathToProjectAdmin);
+
+            return admins;
+        }
+
+        public static string getProductJSON_String()
+        {
+            string admins = File.ReadAllText(@pathToProjectProduct);
 
             return admins;
         }
