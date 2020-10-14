@@ -24,6 +24,7 @@ import { PViewComponent } from './producer-view/p-view/p-view.component';
 import { ZippyComponent } from './producer-view/zippy/zippy.component';
 import { AddProductComponent } from './producer-view/p-view/add-product/add-product.component';
 import { EditProductComponent } from './producer-view/p-view/edit-product/edit-product.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { EditProductComponent } from './producer-view/p-view/edit-product/edit-p
     EditProductComponent,
   ],
   imports: [BrowserModule,
-    HttpClientModule
+            HttpClientModule,
+            FormsModule
     ],
   providers: [ServerService],
   bootstrap: [AppComponent],

@@ -1,11 +1,18 @@
-
-<form>
+<form (ngSubmit)="onSubmit(newProductForm)" #newProductForm="ngForm">
   <!--Input name of the new product-->
   <div class="form-group">
     <label for="productName">Nombre del producto</label>
-    <input type="text" class="form-control" id="productName" placeholder="Lechuga">
+    <input
+      type="text"
+      class="form-control"
+      id="productName"
+      placeholder="Lechuga"
+      ngModel
+      name="newProductName"
+      required>
   </div>
-  <!--Input image of the new product-->
+
+  <!--Input image of the new product
   <div class="form-group">
     <label for="productImage">Imagen del producto</label>
     <div class="file-field">
@@ -15,21 +22,48 @@
     </div>
   </div>
   <br>
+  -->
+
   <!--Input price of the new product-->
   <div class="form-group">
     <label for="productPrice">Precio del producto</label>
-    <input type="number" class="form-control" id="productPrice" placeholder="1000">
+    <input
+      type="number"
+      class="form-control"
+      id="productPrice"
+      placeholder="1000"
+      ngModel
+      name="newProductPrice"
+      required>
   </div>
+
   <!--Input product selling type-->
   <div class="form-group">
-    <label for="productSellingType">Unidad de venta</label>
-    <input type="text" class="form-control" id="productSellingType" placeholder="Kilo, Unidad, Paquete, etc">
+    <label for="productUnit">Unidad de venta</label>
+    <input
+      type="text"
+      class="form-control"
+      id="productUnit"
+      placeholder="Kilo, Unidad, Paquete, etc"
+      ngModel
+      name="newProductUnit"
+      required>
   </div>
+
   <!--Input product availability-->
   <div class="form-group">
     <label for="productAvailability">Disponibilidad del producto</label>
-    <input type="number" class="form-control" id="productAvailability" placeholder="10">
+    <input
+      type="number"
+      class="form-control"
+      id="productAvailability"
+      placeholder="10"
+      ngModel
+      name="newProductAvailability"
+      required>
   </div>
 
-  <button class="btn btn-success" type="submit">Añadir</button>
+  <button class="btn btn-success"
+          type="submit"
+          [disabled]="!newProductForm.valid">Añadir</button>
 </form>
