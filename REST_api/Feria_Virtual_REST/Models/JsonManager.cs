@@ -39,7 +39,14 @@ namespace Feria_Virtual_REST.Models
         private static string pathToProjectAdmin = "E:/OneDriveTEC/OneDrive - Estudiantes ITCR/GITHUB/Feria_Virtual_TEC/REST_api/Database/admins.json";
         private static string pathToProjectClient = " E:/OneDriveTEC/OneDrive - Estudiantes ITCR/GITHUB/Feria_Virtual_TEC/REST_api/Database/clients.json";
         private static string pathToProjectSeller = "E:/OneDriveTEC/OneDrive - Estudiantes ITCR/GITHUB/Feria_Virtual_TEC/REST_api/Database/sellers.json";
-        private static string pathToProjectProduct = "D:/OneDrive TEC/OneDrive - Estudiantes ITCR/GITHUB/Feria_Virtual_TEC/REST_api/Database/products.json";
+        private static string pathToProjectProduct = "E:/OneDrive TEC/OneDrive - Estudiantes ITCR/GITHUB/Feria_Virtual_TEC/REST_api/Database/products.json";
+        
+        /**
+         * Description: Save current users to a json file in database
+         * Parameters:
+         * users: Users store in memory
+         * Return: void
+         */
         public static void saveUsers(LinkedList<User> users)
         {
             List<Admin> listAdmins = new List<Admin>();
@@ -98,6 +105,11 @@ namespace Feria_Virtual_REST.Models
             File.WriteAllText(pathToProjectProduct, resultJsonProducts);
         }
 
+        /*
+        * Description: Retrieve the users form DB
+        * Parameters: None
+        * Return: All the users loaded in DB
+        */
         public static LinkedList<User> retrieveUsers()
         {
             
