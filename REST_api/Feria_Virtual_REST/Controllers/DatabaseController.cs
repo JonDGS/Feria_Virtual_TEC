@@ -84,6 +84,15 @@ namespace Feria_Virtual_REST.Controllers
         }
 
 
+        /**
+         * Description: Access for modifying an attribute of a user
+         * Parameters:
+         * - user: user being modified
+         * - attribute: attribute being modified
+         * - value: value being given to the user
+         * - token: requestee identity
+         * Return: HttpStatusCode
+         */
         [Route("api/Database/Modify/{user}/{attribute}")]
         public HttpResponseMessage modifyUser(string user, string attribute, [FromUri]string value, [FromUri]string token)
         {

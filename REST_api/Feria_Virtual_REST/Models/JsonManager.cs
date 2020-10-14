@@ -105,6 +105,11 @@ namespace Feria_Virtual_REST.Models
             File.WriteAllText(pathToProjectProduct, resultJsonProducts);
         }
 
+        /*
+        * Description: Retrieve the users form DB
+        * Parameters: None
+        * Return: All the users loaded in DB
+        */
         public static LinkedList<User> retrieveUsers()
         {
             

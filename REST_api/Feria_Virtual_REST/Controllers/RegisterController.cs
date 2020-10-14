@@ -11,6 +11,14 @@ namespace Feria_Virtual_REST.Controllers
     public class RegisterController : ApiController
     {
 
+        /**
+         * Description: registry for a user
+         * Parameters:
+         * - user: username
+         * - email: email
+         * - password: password
+         * Return: HttpStatusCode
+         */
         [Route("api/Register/Admin")]
         public HttpResponseMessage registerAdmn([FromUri] string user, [FromUri] string email, [FromUri] string password)
         {
@@ -29,6 +37,27 @@ namespace Feria_Virtual_REST.Controllers
         }
 
 
+        /**
+         * Description: registry for a Seller
+         * Parameters:
+         * - user: username
+         * - email: email
+         * - password: password
+         * - cedula: cedula
+         * - realName: user's real name
+         * - lastName1: first lastname
+         * - lastName2: second lastname
+         * - provincia: province user lives in
+         * - canton: canton user lives in
+         * - distrito: distrito user lives in
+         * - month: month number
+         * - day: day number
+         * - year: year number
+         * - phoneNumber: phoneNumber
+         * - sinpe: sinpe
+         *- lugarDeEntrega: lugarDeEntrega
+         * Return: HttpStatusCode
+         */
         [Route("api/Register/Seller")]
         public HttpResponseMessage registerAdmin([FromUri] string user, [FromUri] string email, [FromUri] string password,
             [FromUri] string cedula, [FromUri] string realName, [FromUri] string lastName1, [FromUri] string lastName2, [FromUri] string provincia,
@@ -48,6 +77,25 @@ namespace Feria_Virtual_REST.Controllers
             return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Username or email already in use");
         }
 
+        /**
+         * Description: registry for a Seller
+         * Parameters:
+         * - user: username
+         * - email: email
+         * - password: password
+         * - cedula: cedula
+         * - realName: user's real name
+         * - lastName1: first lastname
+         * - lastName2: second lastname
+         * - provincia: province user lives in
+         * - canton: canton user lives in
+         * - distrito: distrito user lives in
+         * - month: month number
+         * - day: day number
+         * - year: year number
+         * - phoneNumber: phoneNumber
+         * Return: HttpStatusCode
+         */
         [Route("api/Register/Client")]
         public HttpResponseMessage registerClient([FromUri] string user, [FromUri] string email, [FromUri] string password,
            [FromUri] string cedula, [FromUri] string realName, [FromUri] string lastName1, [FromUri] string lastName2, [FromUri] string provincia,
