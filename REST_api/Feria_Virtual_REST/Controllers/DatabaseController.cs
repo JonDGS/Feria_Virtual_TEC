@@ -5,27 +5,79 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Web;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace Feria_Virtual_REST.Controllers
 {
+    [EnableCors(origins: "http://localhost:4200", headers: "*", methods: "*")]
     public class DatabaseController : ApiController
     {
-        // GET: api/Database
-        public HttpResponseMessage Get([FromBody]string token)
+        [Route("api/Database/{who}")]
+        /*
+         * Description: Show all the different data in DB
+         * Parameters: who -> person or thing that we want the information about
+         * Return: Data of requested person or thing
+         */
+        public HttpResponseMessage getInfoDB(string who, [FromUri] string token)
         {
-            if(UserManager.doesUsernameMatchesType(TokenManager.getUsernameFromToken(token), "Admin"))
-            {
-                LinkedList<User> tempList = JsonManager.retrieveUsers();
 
-                List<User> resultList = new List<User>();
-                
-                foreach(User user in tempList)
+          
+
+            if (UserManager.doesUsernameMatchesType(TokenManager.getUsernameFromToken(token), "Admin"))
+            {
+                switch (who)
                 {
-                    resultList.Add(user);
+                    case "All":
+                        LinkedList<User> tempList = JsonManager.retrieveUsers();
+
+                        List<User> allUsersList = new List<User>();
+
+                        foreach (User user in tempList)
+                        {
+                            allUsersList.Add(user);
+                        }
+
+                        return Request.CreateResponse(HttpStatusCode.OK, JsonConvert.SerializeObject(allUsersList));
+                    case "Sellers":
+                        return Request.CreateResponse(HttpStatusCode.OK, JsonManager.getSellersJSON_String());
+                    case "Clients":
+                        return Request.CreateResponse(HttpStatusCode.OK, JsonManager.getClientsJSON_String());
+                    case "Admins":
+                        return Request.CreateResponse(HttpStatusCode.OK, JsonManager.getAdminJSON_String());
+                    case "Products":
+                        return Request.CreateResponse(HttpStatusCode.OK, JsonManager.getProductJSON_String());
+                    default:
+                        return Request.CreateResponse(HttpStatusCode.BadRequest);
                 }
 
-                return Request.CreateResponse(HttpStatusCode.OK, JsonConvert.SerializeObject(resultList));
+            }
+            else if (UserManager.doesUsernameMatchesType(TokenManager.getUsernameFromToken(token), "Seller")) {
+
+                return Request.CreateResponse(HttpStatusCode.OK, JsonManager.getProductJSON_String());
+            }
+            return Request.CreateResponse(HttpStatusCode.Unauthorized);
+
+        }
+        [Route("api/Database/Create/Product")]
+        /*
+        * Description: Http request for adding a product
+        * Parameters: All the atributes of Product class
+        * Return: none
+        */
+        public HttpResponseMessage addProduct([FromUri] string pName, [FromUri] string category, [FromUri] int price, [FromUri] string packageMode, [FromUri] int availability, [FromUri] string token)
+        {
+
+            
+            if (UserManager.doesUsernameMatchesType(TokenManager.getUsernameFromToken(token), "Seller"))
+            {
+
+                Product newProduct = new Product(pName, category, price, packageMode, availability);
+
+                ProductManager.registerProduct(newProduct);
+
+                return new HttpResponseMessage(HttpStatusCode.Accepted);
 
             }
 
@@ -33,25 +85,34 @@ namespace Feria_Virtual_REST.Controllers
 
         }
 
-        // GET: api/Database/5
-        public string Get(int id)
+
+        /**
+         * Description: Access for modifying an attribute of a user
+         * Parameters:
+         * - user: user being modified
+         * - attribute: attribute being modified
+         * - value: value being given to the user
+         * - token: requestee identity
+         * Return: HttpStatusCode
+         */
+        [Route("api/Database/Modify/{user}/{attribute}")]
+        public HttpResponseMessage modifyUser(string user, string attribute, [FromUri]string value, [FromUri]string token)
         {
-            return "value";
+            if (UserManager.doesUsernameMatchesType(TokenManager.getUsernameFromToken(token), "Admin"))
+            {
+                if (UserManager.modifyAttribute(user, attribute, value))
+                {
+                    return Request.CreateResponse(HttpStatusCode.Accepted);
+                }
+
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "User or attribute not found");
+
+            }
+
+            return Request.CreateResponse(HttpStatusCode.Unauthorized);
+
         }
 
-        // POST: api/Database
-        public void Post([FromBody]string value)
-        {
-        }
 
-        // PUT: api/Database/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE: api/Database/5
-        public void Delete(int id)
-        {
-        }
     }
 }

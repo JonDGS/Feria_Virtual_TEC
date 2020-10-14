@@ -1,2 +1,2 @@
 include ':app'
-rootProject.name = "FeriaVirtual"
+rootProject.name = "feria_virtual_tec"

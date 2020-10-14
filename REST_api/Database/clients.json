@@ -1,1 +1,1 @@
-[{"username":"user2","email":"email2@server.com","passwordHash":"8D969EEF6ECAD3C29A3A629280E686CF0C3F5D5A86AFF3CA12020C923ADC6C92","type":"Client"}]
+[{"cedula":"19","realName":"checho","lastName1":"marin","lastName2":"zuñiga","address":{"provincia":"san jose","canton":"curridabat","distrito":"curidabat"},"dateOfBirth":{"month":12,"day":19,"year":2020},"phoneNumber":"19","username":"checho","email":"checho@gmail.com","passwordHash":"5FE848E0C847C797E8AA8619C025F8E4E9951259E8FFA888DDB36188577AADAB","type":"Client"}]

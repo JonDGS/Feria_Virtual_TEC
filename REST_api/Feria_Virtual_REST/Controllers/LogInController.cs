@@ -5,13 +5,15 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace Feria_Virtual_REST.Controllers
 {
+    [EnableCors(origins: "http://localhost:4200", headers: "*", methods: "*")]
     public class LogInController : ApiController
     {
         // POST: api/LogIn/
-       public HttpResponseMessage logInCredencials([FromUri] string user, [FromUri] string email, [FromUri] string password, [FromUri] string type)
+       public HttpResponseMessage logInCredencials([FromUri] string user, [FromUri] string email, [FromUri] string password)
         {
             if(UserManager.validateCredentials(user, email, password))
             {

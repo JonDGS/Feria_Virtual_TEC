@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { AdminViewComponent } from './admin-view/admin-view.component';
@@ -25,6 +25,9 @@ import { ZippyComponent } from './producer-view/zippy/zippy.component';
 import { ClientFormComponent } from './client-view/client-form/client-form.component';
 import { ClientLogInComponent } from './client-view/client-log-in/client-log-in.component';
 import { ClientSelectorComponent } from './client-view/client-selector/client-selector.component';
+import { AddProductComponent } from './producer-view/p-view/add-product/add-product.component';
+import { EditProductComponent } from './producer-view/p-view/edit-product/edit-product.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -50,8 +53,13 @@ import { ClientSelectorComponent } from './client-view/client-selector/client-se
     ClientFormComponent,
     ClientLogInComponent,
     ClientSelectorComponent,
+    AddProductComponent,
+    EditProductComponent,
   ],
-  imports: [BrowserModule],
+  imports: [BrowserModule,
+            HttpClientModule,
+            FormsModule
+    ],
   providers: [ServerService],
   bootstrap: [AppComponent],
 })

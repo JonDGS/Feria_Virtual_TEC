@@ -51,16 +51,17 @@ namespace Feria_Virtual_REST.Models
             return false;
         }
 
-        public static void retrieveUsers()
-        {
-            //retrieve users from JSON
-        }
-
         public static LinkedList<User> getUsers()
         {
             return registerUsers;
         }
 
+        /**
+         * Description: Checks whether or not a username is available
+         * Parameters:
+         * - user: user
+         * Return: bool whether or not it is available
+         */
         public static bool checkUserAvailability(string user)
         {
             foreach(User currentUser in registerUsers)
@@ -74,6 +75,12 @@ namespace Feria_Virtual_REST.Models
             return true;
         }
 
+        /**
+         * Description: Checks whether or not an email is available
+         * Parameters:
+         * - email: email
+         * Return: bool whether or not it is available
+         */
         public static bool checkEmailAvailability(string email)
         {
             foreach (User currentUser in registerUsers)
@@ -88,6 +95,13 @@ namespace Feria_Virtual_REST.Models
         }
 
 
+        /**
+         * Description: Matches username to a type of user
+         * Parameters:
+         * - username: username
+         * - type: type
+         * Return: bool did it match type
+         */
         public static bool doesUsernameMatchesType(string username, string type)
         {
             foreach(User user in registerUsers)
@@ -102,6 +116,202 @@ namespace Feria_Virtual_REST.Models
             }
 
             return false;
+        }
+
+        /**
+         * Description: Retrives a type by username
+         * Parameters:
+         * - user: user
+         * Return: string of the type of user
+         */
+        public static string getTypeByUsername(string user)
+        {
+            if (!checkUserAvailability(user))
+            {
+                foreach(User currentUser in registerUsers)
+                {
+                    if (currentUser.getUsername().Equals(user))
+                    {
+                        return currentUser.getType();
+                    }
+                }
+            }
+
+            return null;
+        }
+
+        
+        public static User getUser(string user)
+        {
+            foreach(User currentUser in registerUsers)
+            {
+                if (currentUser.getUsername().Equals(user))
+                {
+                    return currentUser;
+                }
+            }
+
+            return null;
+        }
+
+        /**
+         * Description: Modifies a given attribute in a given user
+         * Parameters:
+         * - username: username
+         * - attribute: attribute
+         * - value: value
+         * Return: bool whether or not the change was made
+         */
+        public static bool modifyAttribute(string username, string attribute, string value)
+        {
+            User currentUser = getUser(username);
+
+            if (!currentUser.Equals(null))
+            {
+
+                switch (currentUser.getType())
+                {
+                    case "Admin":
+
+                        Admin currentAdmin = (Admin)currentUser;
+
+                        switch (attribute)
+                        {
+                            case "username":
+                                currentAdmin.username = value;
+                                break;
+                            case "email":
+                                currentAdmin.email = value;
+                                break;
+                            case "passwordHash":
+                                currentAdmin.username = HashComputer.GetHashString(value);
+                                break;
+                            default:
+                                return false;
+                        }
+
+                        JsonManager.saveUsers(registerUsers);
+                        return true;
+
+                    case "Client":
+
+                        Client currentClient = (Client)currentUser;
+
+                        switch (attribute)
+                        {
+                            case "username":
+                                currentClient.username = value;
+                                break;
+                            case "email":
+                                currentClient.email = value;
+                                break;
+                            case "passwordHash":
+                                currentClient.username = HashComputer.GetHashString(value);
+                                break;
+                            case "cedula":
+                                currentClient.cedula = value;
+                                break;
+                            case "realName":
+                                currentClient.realName = value;
+                                break;
+                            case "lastName1":
+                                currentClient.lastName1 = value;
+                                break;
+                            case "provincia":
+                                currentClient.address.provincia = value;
+                                break;
+                            case "canton":
+                                currentClient.address.canton = value;
+                                break;
+                            case "distrito":
+                                currentClient.address.distrito = value;
+                                break;
+                            case "month":
+                                currentClient.dateOfBirth.month = Convert.ToInt32(value);
+                                break;
+                            case "day":
+                                currentClient.dateOfBirth.day = Convert.ToInt32(value);
+                                break;
+                            case "year":
+                                currentClient.dateOfBirth.year = Convert.ToInt32(value);
+                                break;
+                            case "phoneNumber":
+                                currentClient.phoneNumber = value;
+                                break;
+                            default:
+                                return false;
+                        }
+
+                        JsonManager.saveUsers(registerUsers);
+                        return true;
+
+                    case "Seller":
+
+                        Seller currentSeller = (Seller)currentUser;
+
+                        switch (attribute)
+                        {
+                            case "username":
+                                currentSeller.username = value;
+                                break;
+                            case "email":
+                                currentSeller.email = value;
+                                break;
+                            case "passwordHash":
+                                currentSeller.username = HashComputer.GetHashString(value);
+                                break;
+                            case "cedula":
+                                currentSeller.cedula = value;
+                                break;
+                            case "realName":
+                                currentSeller.realName = value;
+                                break;
+                            case "lastName1":
+                                currentSeller.lastName1 = value;
+                                break;
+                            case "provincia":
+                                currentSeller.address.provincia = value;
+                                break;
+                            case "canton":
+                                currentSeller.address.canton = value;
+                                break;
+                            case "distrito":
+                                currentSeller.address.distrito = value;
+                                break;
+                            case "month":
+                                currentSeller.dateOfBirth.month = Convert.ToInt32(value);
+                                break;
+                            case "day":
+                                currentSeller.dateOfBirth.day = Convert.ToInt32(value);
+                                break;
+                            case "year":
+                                currentSeller.dateOfBirth.year = Convert.ToInt32(value);
+                                break;
+                            case "phoneNumber":
+                                currentSeller.phoneNumber = value;
+                                break;
+                            case "sinpe":
+                                currentSeller.sinpe = value;
+                                break;
+                            case "lugarDeEntrega":
+                                currentSeller.lugarDeEntrega = value;
+                                break;
+                            default:
+                                return false;
+                        }
+
+                        JsonManager.saveUsers(registerUsers);
+                        return true;
+
+                    default:
+                        return false;
+
+                }
+
+            }
+
+            return false;
+
         }
 
     }
