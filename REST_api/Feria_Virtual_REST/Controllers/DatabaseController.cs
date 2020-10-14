@@ -13,7 +13,12 @@ namespace Feria_Virtual_REST.Controllers
     public class DatabaseController : ApiController
     {
         [Route("api/Database/{who}")]
-        public HttpResponseMessage getAllUsers(string who)
+        /*
+         * Description: Show all the different data in DB
+         * Parameters: who -> person or thing that we want the information about
+         * Return: Data of requested person or thing
+         */
+        public HttpResponseMessage getInfoDB(string who)
         {
 
             string token = HttpContext.Current.Request.Params["token"];
@@ -39,9 +44,38 @@ namespace Feria_Virtual_REST.Controllers
                         return Request.CreateResponse(HttpStatusCode.OK, JsonManager.getClientsJSON_String());
                     case "Admins":
                         return Request.CreateResponse(HttpStatusCode.OK, JsonManager.getAdminJSON_String());
+                    case "Products":
+                        return Request.CreateResponse(HttpStatusCode.OK, JsonManager.getProductJSON_String());
                     default:
                         return Request.CreateResponse(HttpStatusCode.BadRequest);
                 }
+
+            }
+            else if (UserManager.doesUsernameMatchesType(TokenManager.getUsernameFromToken(token), "Seller")) {
+
+                return Request.CreateResponse(HttpStatusCode.OK, JsonManager.getProductJSON_String());
+            }
+            return Request.CreateResponse(HttpStatusCode.Unauthorized);
+
+        }
+        [Route("api/Database/Create/Product")]
+        /*
+        * Description: Http request for adding a product
+        * Parameters: All the atributes of Product class
+        * Return: none
+        */
+        public HttpResponseMessage addProduct([FromUri] string pName, [FromUri] string category, [FromUri] int price, [FromUri] string packageMode, [FromUri] int availability)
+        {
+
+            string token = HttpContext.Current.Request.Params["token"];
+            if (UserManager.doesUsernameMatchesType(TokenManager.getUsernameFromToken(token), "Seller"))
+            {
+
+                Product newProduct = new Product(pName, category, price, packageMode,availability);
+
+                ProductManager.registerProduct(newProduct);
+
+                return new HttpResponseMessage(HttpStatusCode.Accepted);
 
             }
 
