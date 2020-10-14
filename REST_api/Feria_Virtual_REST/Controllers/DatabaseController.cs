@@ -18,10 +18,10 @@ namespace Feria_Virtual_REST.Controllers
          * Parameters: who -> person or thing that we want the information about
          * Return: Data of requested person or thing
          */
-        public HttpResponseMessage getInfoDB(string who)
+        public HttpResponseMessage getInfoDB(string who, [FromUri] string token)
         {
 
-            string token = HttpContext.Current.Request.Params["token"];
+          
 
             if (UserManager.doesUsernameMatchesType(TokenManager.getUsernameFromToken(token), "Admin"))
             {
@@ -64,10 +64,10 @@ namespace Feria_Virtual_REST.Controllers
         * Parameters: All the atributes of Product class
         * Return: none
         */
-        public HttpResponseMessage addProduct([FromUri] string pName, [FromUri] string category, [FromUri] int price, [FromUri] string packageMode, [FromUri] int availability)
+        public HttpResponseMessage addProduct([FromUri] string pName, [FromUri] string category, [FromUri] int price, [FromUri] string packageMode, [FromUri] int availability, [FromUri] string token)
         {
 
-            string token = HttpContext.Current.Request.Params["token"];
+            
             if (UserManager.doesUsernameMatchesType(TokenManager.getUsernameFromToken(token), "Seller"))
             {
 
