@@ -10,6 +10,9 @@ export class ServerService {
   // producers requests array to save resquests injected by the form
   producersRequestsObj: { id: number; name: string }[] = [];
 
+  //token for users login
+  private token;
+
   // Admin view
   @Output() producerSelected = new EventEmitter<Producer>();
   // category list for storing the categories made by the user
@@ -19,12 +22,12 @@ export class ServerService {
   ];
   categoryID = 1;
   producerList: Producer[] = [
-    new Producer(117730762, 'Alvaro', 'Vargas', 'Heredia, Belen, La Rivera', '3/4/2020', 85787059, 85787059, 'Heredia Centro', 'AVargasM', '123abc'),
-    new Producer(123456789, 'Jose', 'Ferrer', 'San Jose, Escazu, Escazu', '8/11/1996', 20329875, 55896321, 'Ezcazu', 'uyt22', 'pass1word'),
-    new Producer(117730762, 'Alvaro', 'Vargas', 'Heredia, Belen, La Rivera', '3/4/2020', 85787059, 85787059, 'Heredia Centro', 'AVargasM', '123abc'),
-    new Producer(123456789, 'Jose', 'Ferrer', 'San Jose, Escazu, Escazu', '8/11/1996', 20329875, 55896321, 'Ezcazu', 'uyt22', 'pass1word'),
-    new Producer(117730762, 'Alvaro', 'Vargas', 'Heredia, Belen, La Rivera', '3/4/2020', 85787059, 85787059, 'Heredia Centro', 'AVargasM', '123abc'),
-    new Producer(123456789, 'Jose', 'Ferrer', 'San Jose, Escazu, Escazu', '8/11/1996', 20329875, 55896321, 'Ezcazu', 'uyt22', 'pass1word')
+    new Producer(117730762, 'Alvaro', 'Vargas', 'Heredia, Belen, La Rivera', '3/4/2020', 85787059, 85787059, 'Heredia Centro', 'AVargasM', '123abc','examle@asdf.com'),
+    new Producer(123456789, 'Jose', 'Ferrer', 'San Jose, Escazu, Escazu', '8/11/1996', 20329875, 55896321, 'Ezcazu', 'uyt22', 'pass1word','examle@asdf.com'),
+    new Producer(117730762, 'Alvaro', 'Vargas', 'Heredia, Belen, La Rivera', '3/4/2020', 85787059, 85787059, 'Heredia Centro', 'AVargasM', '123abc','examle@asdf.com'),
+    new Producer(123456789, 'Jose', 'Ferrer', 'San Jose, Escazu, Escazu', '8/11/1996', 20329875, 55896321, 'Ezcazu', 'uyt22', 'pass1word','examle@asdf.com'),
+    new Producer(117730762, 'Alvaro', 'Vargas', 'Heredia, Belen, La Rivera', '3/4/2020', 85787059, 85787059, 'Heredia Centro', 'AVargasM', '123abc','examle@asdf.com'),
+    new Producer(123456789, 'Jose', 'Ferrer', 'San Jose, Escazu, Escazu', '8/11/1996', 20329875, 55896321, 'Ezcazu', 'uyt22', 'pass1word','examle@asdf.com')
   ];
 
   constructor(public http: HttpClient) {}
@@ -55,10 +58,12 @@ export class ServerService {
       console.log(response)
     })
   }
-  testGet(){
-    this.http.post('http://localhost:55172/api/Database/Admins',"71a9f5d4-9938-4bac-befa-c8b65653a9c2").subscribe(response=>{
-      console.log(response)
+  login(username,email,password){
+    this.http.post(`http://localhost:55172/api/LogIn?user=${username}&email=${email}&password=${password}`,"").subscribe(res=>{
+      console.log(res)
+      this.token = res;
     })
+    
     
 //71a9f5d4-9938-4bac-befa-c8b65653a9c2
   }

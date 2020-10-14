@@ -25,6 +25,10 @@ using System.Web;
  */
 
 /*
+ * C:/Users/Dxnium/OneDrive - Estudiantes ITCR/TEC/DB/Tareas/TC#1/Feria_Virtual_TEC/REST_api/Database
+ */
+
+/*
  * C:/Users/SMZ19/OneDrive/Documentos/GitHub/Feria_Virtual_TEC/REST_api/Database/admins.json    
  * C:/Users/SMZ19/OneDrive/Documentos/GitHub/Feria_Virtual_TEC/REST_api/Database/clients.json   
  * C:/Users/SMZ19/OneDrive/Documentos/GitHub/Feria_Virtual_TEC/REST_api/Database/sellers.json
@@ -36,10 +40,10 @@ namespace Feria_Virtual_REST.Models
     public static class JsonManager
     {
 
-        private static string pathToProjectAdmin = "E:/OneDriveTEC/OneDrive - Estudiantes ITCR/GITHUB/Feria_Virtual_TEC/REST_api/Database/admins.json";
-        private static string pathToProjectClient = " E:/OneDriveTEC/OneDrive - Estudiantes ITCR/GITHUB/Feria_Virtual_TEC/REST_api/Database/clients.json";
-        private static string pathToProjectSeller = "E:/OneDriveTEC/OneDrive - Estudiantes ITCR/GITHUB/Feria_Virtual_TEC/REST_api/Database/sellers.json";
-        private static string pathToProjectProduct = "E:/OneDrive TEC/OneDrive - Estudiantes ITCR/GITHUB/Feria_Virtual_TEC/REST_api/Database/products.json";
+        private static string pathToProjectAdmin = "C:/Users/Dxnium/OneDrive - Estudiantes ITCR/TEC/DB/Tareas/TC#1/Feria_Virtual_TEC/REST_api/Database/admins.json";
+        private static string pathToProjectClient = "C:/Users/Dxnium/OneDrive - Estudiantes ITCR/TEC/DB/Tareas/TC#1/Feria_Virtual_TEC/REST_api/Database/clients.json";
+        private static string pathToProjectSeller = "C:/Users/Dxnium/OneDrive - Estudiantes ITCR/TEC/DB/Tareas/TC#1/Feria_Virtual_TEC/REST_api/Database/sellers.json";
+        private static string pathToProjectProduct = "C:/Users/Dxnium/OneDrive - Estudiantes ITCR/TEC/DB/Tareas/TC#1/Feria_Virtual_TEC/REST_api/Database/products.json";
         
         /**
          * Description: Save current users to a json file in database
