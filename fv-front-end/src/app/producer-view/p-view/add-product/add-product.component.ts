@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {Product} from '../../../models/product';
 import {Category} from '../../../models/category.model';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-add-product',
@@ -12,7 +13,7 @@ export class AddProductComponent implements OnInit {
   @ViewChild('newProductForm') productForm: NgForm;
   product: Product;
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
   }
@@ -29,5 +30,11 @@ export class AddProductComponent implements OnInit {
     console.log(this.product);
 
     this.productForm.reset();
+
+    this.http.post(
+      'http://localhost:4200/#', this.product
+    ).subscribe(responseData => {
+      console.log(responseData);
+      });
   }
 }
