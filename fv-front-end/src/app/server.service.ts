@@ -32,10 +32,6 @@ export class ServerService {
 
   constructor(public http: HttpClient) {}
 
-  body = {
-    token : "71a9f5d4-9938-4bac-befa-c8b65653a9c2",
-  }
-
   addProducerRequest(producer) {
     this.producersRequestsObj.push(producer);
   }
@@ -63,13 +59,9 @@ export class ServerService {
       console.log(res)
       this.token = res;
     })
-    
-    
-//71a9f5d4-9938-4bac-befa-c8b65653a9c2
+  }
+
+  products(){
+    return this.http.get(`http://localhost:55172/api/Database/Products?token=${this.token}`)
   }
 }
-
-
-//private static string pathToProjectAdmin = "C:/Users/Dxnium/OneDrive - Estudiantes ITCR/TEC/DB/Tareas/TC#1/Feria_Virtual_TEC/REST_api/Database/admins.json";
-//        private static string pathToProjectClient = "C:/Users/Dxnium/OneDrive - Estudiantes ITCR/TEC/DB/Tareas/TC#1/Feria_Virtual_TEC/REST_api/Database/clients.json";
- //       private static string pathToProjectSeller = "C:/Users/Dxnium/OneDrive - Estudiantes ITCR/TEC/DB/Tareas/TC#1/Feria_Virtual_TEC/REST_api/Database/sellers.json";

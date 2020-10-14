@@ -7,7 +7,7 @@
     </div>
     <div class="col">
       <button class="btn btn-primary" (click)="onSelectView('form')">
-        <i class="fab fa-wpforms"> Enviar solicitud</i>
+        <i class="fab fa-wpforms"> Registrarse</i>
       </button>
     </div>
   </div>
@@ -15,3 +15,4 @@
 
 <client-log-in *ngIf="currentActivate === 'login'"></client-log-in>
 <client-form *ngIf="currentActivate === 'form'"></client-form>
+<c-view></c-view>

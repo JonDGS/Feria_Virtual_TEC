@@ -28,6 +28,8 @@ import { ClientSelectorComponent } from './client-view/client-selector/client-se
 import { AddProductComponent } from './producer-view/p-view/add-product/add-product.component';
 import { EditProductComponent } from './producer-view/p-view/edit-product/edit-product.component';
 import { FormsModule } from '@angular/forms';
+import { CViewComponent } from './client-view/c-view/c-view.component';
+import { CardsComponent } from './client-view/c-view/cards/cards.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +57,8 @@ import { FormsModule } from '@angular/forms';
     ClientSelectorComponent,
     AddProductComponent,
     EditProductComponent,
+    CViewComponent,
+    CardsComponent,
   ],
   imports: [BrowserModule,
             HttpClientModule,
