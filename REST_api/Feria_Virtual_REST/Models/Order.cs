@@ -11,12 +11,13 @@ namespace Feria_Virtual_REST.Models
         public string addressToDeliver;
         public int ID;
         public string sellerAssigned;
-        public LinkedList<Product> productsList = new LinkedList<Product>();
-        public Order(int ID, string addressToDeliver, string sellerAssigned, LinkedList<Product> productsList)
+        public List<Product> productsList = new List<Product>();
+        public Order(int ID, string addressToDeliver, string sellerAssigned, List<Product> productsList)
         {
             this.ID = ID;
             this.addressToDeliver = addressToDeliver;
             this.sellerAssigned = sellerAssigned;
+            this.productsList = productsList;
 
         }
 
