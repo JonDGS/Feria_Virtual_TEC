@@ -32,7 +32,7 @@ export class AddProductComponent implements OnInit {
     this.productForm.reset();
 
     this.http.post(
-      'http://localhost:4200/#', this.product
+      'http://localhost:55172/api/Database/Modify/TheManager/username?value=ElManager&token=123', this.product
     ).subscribe(responseData => {
       console.log(responseData);
       });
