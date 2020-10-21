@@ -178,6 +178,83 @@ namespace Feria_Virtual_REST.Controllers
 
         }
 
+        /**
+         * Description: HttpRequest to delete a seller
+         * Parameters:
+         * - seller: seller to be deleted
+         * - token: requested identity
+         * Return: HttpStatusCode
+         */
+        [Route("api/Database/Delete/Sellers/{seller}")]
+        public HttpResponseMessage deleteUser(string seller,[FromUri] string token)
+        {
+            string username = TokenManager.getUsernameFromToken(token);
+            if (UserManager.doesUsernameMatchesType(username, "Admin"))
+            {
+                if (UserManager.deleteUser(seller))
+                {
+                    ProductManager.deleteProduct(seller);
+                    return Request.CreateResponse(HttpStatusCode.Accepted);
+                }
+
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "User not found :( ");
+
+            }
+
+            return Request.CreateResponse(HttpStatusCode.Unauthorized);
+
+        }
+        /**
+         * Description: HttpRequest to delete a product
+         * Parameters:
+         * - product: product to be deleted
+         * - token: requested identity
+         * Return: HttpStatusCode
+         */
+        [Route("api/Database/Delete/Products/{product}")]
+        public HttpResponseMessage deleteProduct(string product, [FromUri] string token)
+        {
+            string username = TokenManager.getUsernameFromToken(token);
+            if (UserManager.doesUsernameMatchesType(username, "Seller"))
+            {
+                if (ProductManager.deleteProduct(product, username))
+                {
+                    return Request.CreateResponse(HttpStatusCode.Accepted);
+                }
+
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Product not found, check if you have the product you want to delete :( ");
+
+            }
+
+            return Request.CreateResponse(HttpStatusCode.Unauthorized);
+
+        }
+        /**
+         * Description: HttpRequest to delete a product
+         * Parameters:
+         * - product: product to be deleted
+         * - token: requested identity
+         * Return: HttpStatusCode
+         */
+        [Route("api/Database/Delete/Client")]
+        public HttpResponseMessage deleteClient([FromUri] string token)
+        {
+            string username = TokenManager.getUsernameFromToken(token);
+
+            if (UserManager.doesUsernameMatchesType(username, "Client"))
+            {
+                if (UserManager.deleteUser(username))
+                {
+                    return Request.CreateResponse(HttpStatusCode.Accepted);
+                }
+
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Client not found :( ");
+
+            }
+
+            return Request.CreateResponse(HttpStatusCode.Unauthorized);
+
+        }
         [Route("api/Database/Report/{it}/{attribute}")]
         public HttpResponseMessage getReport(string it, string attribute)
         {

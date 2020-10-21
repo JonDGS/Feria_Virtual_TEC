@@ -25,6 +25,49 @@ namespace Feria_Virtual_REST.Models
             JsonManager.saveProduct(registeredProducts);
         }
 
+        /*
+         * Description: Deletes a product in the database
+         * Parameter: usernameToDelete
+         * return: bool
+         */
+        public static bool deleteProduct(string productToDelete, string username)
+        {
+            foreach (Product product in registeredProducts)
+            {
+                if (product.seller.Equals(username)) {
+                    if (product.pName.Equals(productToDelete))
+                    {
+                        registeredProducts.Remove(product);
+                        JsonManager.saveProduct(registeredProducts);
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+        /*
+         * Description: Deletes all product from a seller in the database
+         * Parameter: username
+         * return: bool
+         */
+        public static bool deleteProduct(string username)
+        {
+            var index = registeredProducts.First;
+            while(index != null)
+            {
+                var nextIndex = index.Next;
+                if (index.Value.seller.Equals(username))
+                {
+                    registeredProducts.Remove(index);
+                    
+
+                }
+                index = nextIndex;
+            }
+            JsonManager.saveProduct(registeredProducts);
+            return true;
+        }
+
         public static List<Product> getProductsBasedOnSeller(string user)
         {
             List<Product> sellerProducts = new List<Product>();
