@@ -8,42 +8,16 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Web;
 
-//Paths for computer and Laptop
-
-/* Laptop
- * D:/OneDrive TEC/OneDrive - Estudiantes ITCR/GITHUB/Feria_Virtual_TEC/REST_api/Database/admins.json
- * D:/OneDrive TEC/OneDrive - Estudiantes ITCR/GITHUB/Feria_Virtual_TEC/REST_api/Database/clients.json
- * D:/OneDrive TEC/OneDrive - Estudiantes ITCR/GITHUB/Feria_Virtual_TEC/REST_api/Database/sellers.json
- * D:/OneDrive TEC/OneDrive - Estudiantes ITCR/GITHUB/Feria_Virtual_TEC/REST_api/Database/products.json
- * D:/OneDrive TEC/OneDrive - Estudiantes ITCR/GITHUB/Feria_Virtual_TEC/REST_api/Database/orders.json
- */
-
-/* Desktop
- * E:/OneDriveTEC/OneDrive - Estudiantes ITCR/GITHUB/Feria_Virtual_TEC/REST_api/Database/admins.json
- * E:/OneDriveTEC/OneDrive - Estudiantes ITCR/GITHUB/Feria_Virtual_TEC/REST_api/Database/clients.json
- * E:/OneDriveTEC/OneDrive - Estudiantes ITCR/GITHUB/Feria_Virtual_TEC/REST_api/Database/sellers.json
- * E:/OneDriveTEC/OneDrive - Estudiantes ITCR/GITHUB/Feria_Virtual_TEC/REST_api/Database/products.json
- * E:/OneDrive TEC/OneDrive - Estudiantes ITCR/GITHUB/Feria_Virtual_TEC/REST_api/Database/orders.json
- */
-
-/*
- * C:/Users/SMZ19/OneDrive/Documentos/GitHub/Feria_Virtual_TEC/REST_api/Database/admins.json    
- * C:/Users/SMZ19/OneDrive/Documentos/GitHub/Feria_Virtual_TEC/REST_api/Database/clients.json   
- * C:/Users/SMZ19/OneDrive/Documentos/GitHub/Feria_Virtual_TEC/REST_api/Database/sellers.json
- * C:/Users/SMZ19/OneDrive/Documentos/GitHub/Feria_Virtual_TEC/REST_api/Database/products.json
- * C:/Users/SMZ19/OneDrive/Documentos/GitHub/Feria_Virtual_TEC/REST_api/Database/orders.json
-*/
-
 namespace Feria_Virtual_REST.Models
 {
     public static class JsonManager
     {
 
-        private static string pathToProjectAdmin = "C:/Users/SMZ19/OneDrive/Documentos/GitHub/Feria_Virtual_TEC/REST_api/Database/admins.json";
-        private static string pathToProjectClient = "C:/Users/SMZ19/OneDrive/Documentos/GitHub/Feria_Virtual_TEC/REST_api/Database/clients.json";
-        private static string pathToProjectSeller = "C:/Users/SMZ19/OneDrive/Documentos/GitHub/Feria_Virtual_TEC/REST_api/Database/sellers.json";
-        private static string pathToProjectProduct = "C:/Users/SMZ19/OneDrive/Documentos/GitHub/Feria_Virtual_TEC/REST_api/Database/products.json";
-        private static string pathToProjectOrder = "C:/Users/SMZ19/OneDrive/Documentos/GitHub/Feria_Virtual_TEC/REST_api/Database/orders.json";
+        private static string pathToProjectAdmin = AppDomain.CurrentDomain.BaseDirectory + "/Database/admins.json";
+        private static string pathToProjectClient = AppDomain.CurrentDomain.BaseDirectory + "/Database/clients.json";
+        private static string pathToProjectSeller = AppDomain.CurrentDomain.BaseDirectory + "/Database/sellers.json";
+        private static string pathToProjectProduct = AppDomain.CurrentDomain.BaseDirectory + "/Database/products.json";
+        private static string pathToProjectOrder = AppDomain.CurrentDomain.BaseDirectory + "/Database/orders.json";
         /**
          * Description: Save current users to a json file in database
          * Parameters:
