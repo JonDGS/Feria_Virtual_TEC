@@ -170,6 +170,7 @@
     <Compile Include="Models\JsonManager.cs" />
     <Compile Include="Models\MainTest.cs" />
     <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\OrderManager.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductManager.cs" />
     <Compile Include="Models\Seller.cs" />
