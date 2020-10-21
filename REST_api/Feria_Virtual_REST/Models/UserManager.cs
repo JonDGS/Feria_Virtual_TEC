@@ -330,5 +330,19 @@ namespace Feria_Virtual_REST.Models
 
         }
 
+        public static List<Seller> getSellers()
+        {
+            List<Seller> tempList = new List<Seller>();
+            
+            foreach(User user in registerUsers)
+            {
+                if(user.type == "Seller")
+                {
+                    tempList.Add((Seller)user);
+                }
+            }
+
+            return tempList;
+        }
     }
 }

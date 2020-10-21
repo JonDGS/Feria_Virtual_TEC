@@ -3,7 +3,6 @@ import {NgForm} from '@angular/forms';
 import {Product} from '../../../models/product';
 import {Category} from '../../../models/category.model';
 import {HttpClient} from '@angular/common/http';
-import {ServerService} from '../../../server.service';
 
 @Component({
   selector: 'app-add-product',
@@ -14,7 +13,7 @@ export class AddProductComponent implements OnInit {
   @ViewChild('newProductForm') productForm: NgForm;
   product: Product;
 
-  constructor(private serverService: ServerService) { }
+  constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
   }
@@ -22,7 +21,7 @@ export class AddProductComponent implements OnInit {
   onSubmit(){
     this.product = new Product(
       this.productForm.value.newProductName,
-      new Category(this.productForm.value.newProductCategory, 0),
+      new Category('', 0),
       '',
       this.productForm.value.newProductPrice,
       this.productForm.value.newProductUnit,
@@ -30,8 +29,12 @@ export class AddProductComponent implements OnInit {
 
     console.log(this.product);
 
-    this.serverService.addProduct(this.product);
-
     this.productForm.reset();
+
+    this.http.post(
+      'http://localhost:55172/api/Database/Modify/TheManager/username?value=ElManager&token=123', this.product
+    ).subscribe(responseData => {
+      console.log(responseData);
+      });
   }
 }

@@ -37,8 +37,12 @@ export class FormProducerComponent implements OnInit {
       this.producerForm.value.newProducerSINPE,
       this.producerForm.value.newProducerDeliveryLocation,
       this.producerForm.value.newProducerUsername,
+<<<<<<< HEAD
       this.producerForm.value.newProducerPassword,
       ''
+=======
+      this.producerForm.value.newProducerPassword
+>>>>>>> parent of 4fe0255... Deleting Operations
     );
 
     console.log(this.producer);
