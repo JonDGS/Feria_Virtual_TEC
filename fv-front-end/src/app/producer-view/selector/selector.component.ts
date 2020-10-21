@@ -11,6 +11,5 @@ export class SelectorComponent {
 
   onSelectView(view: string) {
     this.currentActivate = view;
-    
   }
 }

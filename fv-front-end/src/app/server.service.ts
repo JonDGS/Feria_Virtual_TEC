@@ -47,7 +47,7 @@ export class ServerService {
   }
 
   register(){
-    this.http.post('http://localhost:55172/api/Database/Admins?token=' + "c480040d-40cf-45b2-afec-e4515298891a","").subscribe(response=>{
+    this.http.post('http://localhost:55172/api/Register/Admin?user=sergio&email=sergio@admin.com&password=hola1234',"").subscribe(response=>{
       console.log(response)
     })
   }
