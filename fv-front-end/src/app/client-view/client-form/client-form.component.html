@@ -1,54 +1,110 @@
-<form class="form-producer">
+<form class="form-producer" (ngSubmit)="onSubmitClient()" #newClientForm="ngForm" >
   <h1>Solicitudes para Provedores</h1>
-  <div class="from-group">
+  <div class="from-group" ngModelGroup="fullName">
     <div class="row">
       <div class="col-md-6 mb-3">
-        <input type="text" class="form-control" placeholder="Nombre" />
+
+        <!--Name-->
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Nombre"
+          name="newClientName"
+          ngModel
+          required/>
       </div>
       <div class="col-md-6 mb-3">
-        <input type="text" class="form-control" placeholder="Apellido" />
+
+        <!--Last Name-->
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Apellido"
+          name="newClientLastName"
+          ngModel
+          required/>
       </div>
     </div>
   </div>
   <div class="form-group">
     <div class="row">
       <div class="col-md-6">
-        <input type="text" class="form-control" placeholder="Cédula" />
+
+        <!--ID-->
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Cédula"
+          name="newClientID"
+          ngModel
+          required/>
       </div>
       <div class="col-md-6">
+
+        <!--Birthday-->
         <input
           class="form-control birthdate"
           type="date"
           placeholder="YYYY-MM-DD"
           data-date-split-input="true"
-        />
+          name="newClientBirthday"
+          ngModel
+          required/>
       </div>
     </div>
   </div>
-  <div class="form-group">
+  <div class="form-group" ngModelGroup="location">
     <div class="row">
       <div class="col-md">
-        <input type="text" class="form-control" placeholder="Provincia" />
-      </div>
-      <div class="col-md">
-        <input type="text" class="form-control" placeholder="Cantón" />
-      </div>
-      <div class="col-md">
-        <input type="text" class="form-control" placeholder="Distrito" />
-      </div>
-    </div>
-  </div>
-  <div class="form-group">
-    <div class="row">
-      <div class="col">
-        <input type="text" class="form-control" placeholder="Teléfono" />
-      </div>
-      <div class="col">
-        <input type="text" class="form-control" placeholder="SINPE" />
-      </div>
-    </div>
-  </div>
 
+        <!--Province-->
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Provincia"
+          name="newClientProvince"
+          ngModel
+          required/>
+      </div>
+      <div class="col-md">
+
+        <!--Canton-->
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Cantón"
+          name="newClientCanton"
+          ngModel
+          required/>
+      </div>
+      <div class="col-md">
+
+        <!--District-->
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Distrito"
+          name="newClientDistrict"
+          ngModel
+          required/>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="row">
+      <div class="col">
+
+        <!--Phone-->
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Teléfono"
+          name="newClientPhone"
+          ngModel
+          required/>
+      </div>
+    </div>
+  </div>
   <div class="form-group">
     <div class="row">
       <div class="col">
@@ -56,22 +112,37 @@
           <div class="input-group-prepend">
             <div class="input-group-text">@</div>
           </div>
+
+          <!--Username-->
           <input
             type="text"
             class="form-control"
             id="inlineFormInputGroup"
             placeholder="Username"
-          />
+            name="newClientUsername"
+            ngModel
+            required/>
         </div>
       </div>
       <div class="col">
-        <input type="password" class="form-control" placeholder="contraseña" />
+
+        <!--Password-->
+        <input
+          type="password"
+          class="form-control"
+          placeholder="contraseña"
+          name="newClientPassword"
+          ngModel
+          required/>
       </div>
     </div>
   </div>
   <div class="form-group">
     <div class="row">
-      <button class="btn btn-success">Registrarse</button>
+      <button
+        class="btn btn-success"
+        type="submit"
+        [disabled]="!newClientForm.valid">Registrarse</button>
     </div>
   </div>
 </form>
