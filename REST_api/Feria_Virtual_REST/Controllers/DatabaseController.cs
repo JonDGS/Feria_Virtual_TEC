@@ -21,7 +21,7 @@ namespace Feria_Virtual_REST.Controllers
         public HttpResponseMessage getInfoDB(string who, [FromUri] string token)
         {
 
-          
+
 
             if (UserManager.doesUsernameMatchesType(TokenManager.getUsernameFromToken(token), "Admin"))
             {
@@ -69,14 +69,14 @@ namespace Feria_Virtual_REST.Controllers
         public HttpResponseMessage getOrdersFromProducer(string who, [FromUri] string token)
         {
 
-             if (UserManager.doesUsernameMatchesType(TokenManager.getUsernameFromToken(token), "Seller"))
+            if (UserManager.doesUsernameMatchesType(TokenManager.getUsernameFromToken(token), "Seller"))
             {
                 LinkedList<Order> currentOrderList = OrderManager.registeredOrders;
                 List<Order> orderAssignedToSeller = new List<Order>();
                 foreach (Order order in currentOrderList) {
                     if (order.sellerAssigned.Equals(who)) {
                         orderAssignedToSeller.Add(order);
-                        
+
                     }
                 }
                 return Request.CreateResponse(HttpStatusCode.OK, JsonManager.convertListToJson(orderAssignedToSeller));
@@ -94,11 +94,13 @@ namespace Feria_Virtual_REST.Controllers
         public HttpResponseMessage addProduct([FromUri] string pName, [FromUri] string category, [FromUri] int price, [FromUri] string packageMode, [FromUri] int availability, [FromUri] string token)
         {
 
-            
+
             if (UserManager.doesUsernameMatchesType(TokenManager.getUsernameFromToken(token), "Seller"))
             {
 
-                Product newProduct = new Product(pName, category, price, packageMode, availability);
+                string sellerUsername = TokenManager.getUsernameFromToken(token);
+
+                Product newProduct = new Product(pName, category, price, packageMode, availability, sellerUsername);
 
                 ProductManager.registerProduct(newProduct);
 
@@ -116,11 +118,11 @@ namespace Feria_Virtual_REST.Controllers
         * Return: none
         */
         public HttpResponseMessage addOrder([FromUri] int ID, [FromUri] string addressToDeliver, [FromUri] string sellerAssigned, [FromUri] string productsListInJsonFormat, [FromUri] string token)
-        { 
+        {
             if (UserManager.doesUsernameMatchesType(TokenManager.getUsernameFromToken(token), "Client"))
             {
-               
-                Order newOrder = new Order(ID, addressToDeliver,sellerAssigned,JsonManager.convertStringToList(productsListInJsonFormat));
+
+                Order newOrder = new Order(addressToDeliver, sellerAssigned, JsonManager.convertStringToList(productsListInJsonFormat));
 
                 OrderManager.registerOrder(newOrder);
 
@@ -142,7 +144,7 @@ namespace Feria_Virtual_REST.Controllers
          * Return: HttpStatusCode
          */
         [Route("api/Database/Modify/{user}/{attribute}")]
-        public HttpResponseMessage modifyUser(string user, string attribute, [FromUri]string value, [FromUri]string token)
+        public HttpResponseMessage modifyUser(string user, string attribute, [FromUri] string value, [FromUri] string token)
         {
             if (UserManager.doesUsernameMatchesType(TokenManager.getUsernameFromToken(token), "Admin"))
             {
@@ -157,6 +159,12 @@ namespace Feria_Virtual_REST.Controllers
 
             return Request.CreateResponse(HttpStatusCode.Unauthorized);
 
+        }
+
+        [Route("api/Database/Report/{it}/{attribute}")]
+        public HttpResponseMessage getReport(string it, string attribute)
+        {
+            return null;
         }
 
 
