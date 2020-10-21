@@ -7,6 +7,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web;
 using System.Web.Http;
+using System.Web.UI.WebControls;
 
 namespace Feria_Virtual_REST.Controllers
 {
@@ -53,14 +54,30 @@ namespace Feria_Virtual_REST.Controllers
                 }
 
             }
-            else if (UserManager.doesUsernameMatchesType(TokenManager.getUsernameFromToken(token), "Seller")) {
+            return Request.CreateResponse(HttpStatusCode.Unauthorized);
+        }
 
-                return Request.CreateResponse(HttpStatusCode.OK, JsonManager.getProductJSON_String());
+        [Route("api/Database/GetProducts")]
+        /*
+         * Description: Show all the order assigned to a seller
+         * Parameters: who -> seller
+         * Return: Seller's orders
+         */
+        public HttpResponseMessage getProductsFromSellers([FromUri] string token)
+        {
+            string username = TokenManager.getUsernameFromToken(token);
+
+            if (UserManager.doesUsernameMatchesType(username, "Seller"))
+            {
+
+                List<Product> productsAssignedToSeller = ProductManager.getProductsBasedOnSeller(username);
+
+                return Request.CreateResponse(HttpStatusCode.OK, JsonManager.convertListToJson(productsAssignedToSeller));
             }
             return Request.CreateResponse(HttpStatusCode.Unauthorized);
-
         }
-        [Route("api/Database/GetOrdersFrom/{who}")]
+
+            [Route("api/Database/GetOrdersFrom/{who}")]
         /*
          * Description: Show all the order assigned to a seller
          * Parameters: who -> seller
