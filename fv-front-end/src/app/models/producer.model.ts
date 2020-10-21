@@ -8,6 +8,5 @@ export class Producer {
               public sinpe: number,
               public deliveryLocation: string,
               public user: string,
-              public password: string,
-              public email: string) {}
+              public password: string) {}
 }
