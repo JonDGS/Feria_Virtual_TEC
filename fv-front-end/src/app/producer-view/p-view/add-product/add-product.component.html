@@ -9,11 +9,11 @@
       placeholder="Lechuga"
       ngModel
       name="newProductName"
-      required>
+      required
+    />
   </div>
 
   <!--Input image of the new product
-  <div class="form-group">
     <label for="productImage">Imagen del producto</label>
     <div class="file-field">
       <div class="btn btn-primary btn-sm float-left" id="productImage">
@@ -23,6 +23,18 @@
   </div>
   <br>
   -->
+  <div class="form-group">
+    <label for="productCategory">Categoria del producto</label>
+    <input
+      type="text"
+      class="form-control"
+      id="productCategory"
+      placeholder="verduras"
+      ngModel
+      name="newProductCategory"
+      required
+    />
+  </div>
 
   <!--Input price of the new product-->
   <div class="form-group">
@@ -34,7 +46,8 @@
       placeholder="1000"
       ngModel
       name="newProductPrice"
-      required>
+      required
+    />
   </div>
 
   <!--Input product selling type-->
@@ -47,7 +60,8 @@
       placeholder="Kilo, Unidad, Paquete, etc"
       ngModel
       name="newProductUnit"
-      required>
+      required
+    />
   </div>
 
   <!--Input product availability-->
@@ -60,10 +74,15 @@
       placeholder="10"
       ngModel
       name="newProductAvailability"
-      required>
+      required
+    />
   </div>
 
-  <button class="btn btn-success"
-          type="submit"
-          [disabled]="!newProductForm.valid">Añadir</button>
+  <button
+    class="btn btn-success"
+    type="submit"
+    [disabled]="!newProductForm.valid"
+  >
+    Añadir
+  </button>
 </form>

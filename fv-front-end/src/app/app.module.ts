@@ -22,9 +22,14 @@ import { LoginProducerComponent } from './producer-view/login-producer/login-pro
 import { SelectorComponent } from './producer-view/selector/selector.component';
 import { PViewComponent } from './producer-view/p-view/p-view.component';
 import { ZippyComponent } from './producer-view/zippy/zippy.component';
+import { ClientFormComponent } from './client-view/client-form/client-form.component';
+import { ClientLogInComponent } from './client-view/client-log-in/client-log-in.component';
+import { ClientSelectorComponent } from './client-view/client-selector/client-selector.component';
 import { AddProductComponent } from './producer-view/p-view/add-product/add-product.component';
 import { EditProductComponent } from './producer-view/p-view/edit-product/edit-product.component';
 import { FormsModule } from '@angular/forms';
+import { CViewComponent } from './client-view/c-view/c-view.component';
+import { CardsComponent } from './client-view/c-view/cards/cards.component';
 
 @NgModule({
   declarations: [
@@ -47,8 +52,13 @@ import { FormsModule } from '@angular/forms';
     SelectorComponent,
     PViewComponent,
     ZippyComponent,
+    ClientFormComponent,
+    ClientLogInComponent,
+    ClientSelectorComponent,
     AddProductComponent,
     EditProductComponent,
+    CViewComponent,
+    CardsComponent,
   ],
   imports: [BrowserModule,
             HttpClientModule,

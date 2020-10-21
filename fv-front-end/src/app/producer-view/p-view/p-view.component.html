@@ -1,11 +1,22 @@
-<div class="row" style="margin: 10px;">
+<div class="row" style="margin: 10px">
   <div class="col">
     <h3>Añadir nuevo producto</h3>
     <app-add-product></app-add-product>
   </div>
   <div class="col">
     <h3>Lista de productos</h3>
-    <zippy title="Products"><h1>List of products</h1></zippy>
+    <zippy title="Products"
+      ><ul class="list-group" *ngFor="let product of products">
+        <li
+          class="list-group-item d-flex justify-content-between align-items-center"
+        >
+          {{ product.pName }}
+          <span class="badge badge-primary badge-pill">{{
+            product.availability
+          }}</span>
+        </li>
+      </ul></zippy
+    >
   </div>
   <div class="col">
     <h3>Seleccina un producto para cambiar</h3>
