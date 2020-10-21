@@ -30,6 +30,8 @@ import { EditProductComponent } from './producer-view/p-view/edit-product/edit-p
 import { FormsModule } from '@angular/forms';
 import { CViewComponent } from './client-view/c-view/c-view.component';
 import { CardsComponent } from './client-view/c-view/cards/cards.component';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +61,8 @@ import { CardsComponent } from './client-view/c-view/cards/cards.component';
     EditProductComponent,
     CViewComponent,
     CardsComponent,
+    ShoppingCartComponent,
+    ProfileComponent,
   ],
   imports: [BrowserModule,
             HttpClientModule,

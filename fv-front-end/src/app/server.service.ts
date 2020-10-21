@@ -12,7 +12,7 @@ export class ServerService {
   producersRequestsObj: { id: number; name: string }[] = [];
 
   //token for users login
-  private token;
+  public token;
 
   // Admin view
   @Output() producerSelected = new EventEmitter<Producer>();
@@ -47,12 +47,14 @@ export class ServerService {
   }
 
   register(){
+    console.log(this.token);
+    
     this.http.post('http://localhost:55172/api/Database/Admins?token=' + "c480040d-40cf-45b2-afec-e4515298891a","").subscribe(response=>{
       console.log(response)
     })
   }
   login(username,email,password){
-    this.http.post(`http://localhost:55172/api/LogIn?user=${username}&email=${email}&password=${password}`,"").subscribe(res=>{
+     this.http.post(`http://localhost:55172/api/LogIn?user=${username}&email=${email}&password=${password}`,"").subscribe(res=>{
       console.log(res);
       this.token = res;
     })
