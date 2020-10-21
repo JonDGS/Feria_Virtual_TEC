@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
+using System.Threading;
 using System.Web;
+using System.Web.Hosting;
 using System.Web.ModelBinding;
+using System.Web.UI.WebControls;
 
 namespace Feria_Virtual_REST.Models
 {
@@ -42,7 +45,7 @@ namespace Feria_Virtual_REST.Models
             return sellerProducts;
         }
 
-        public static List<Product> sortListBy(List<Product> products, string attribute)
+        public static List<Product> sortProductListBy(List<Product> products, string attribute)
         {
             if(products.Count == 1)
             {
@@ -99,11 +102,89 @@ namespace Feria_Virtual_REST.Models
             
         }
         
+        
         public static List<Product> getTopN_ProductsPerSellerByAttribute(string user, string attribute, int numberOfTop)
         {
             List<Product> sellerProducts = getProductsBasedOnSeller(user);
 
-            return sortListBy(sellerProducts, attribute).GetRange(0, numberOfTop);
+            return sortProductListBy(sellerProducts, attribute).GetRange(0, numberOfTop);
         }
+
+        public static List<Product> getProductsAsA_List()
+        {
+            List<Product> products = new List<Product>();
+
+            foreach (Product product in registeredProducts)
+            {
+                products.Add(product);
+            }
+
+            return products;
+
+        }
+
+        public static int countSellerSells(string user)
+        {
+            int counter = 0;
+
+            foreach(Product product in registeredProducts)
+            {
+                if (product.seller.Equals(user))
+                {
+                    counter++;
+                }
+            }
+
+            return counter;
+            
+        }
+
+        public static List<SellerSortingInfo> sortSellerListBy(List<Seller> sellers, string attribute)
+        {
+            if (sellers.Count() == 1)
+            {
+                List<SellerSortingInfo> tempList = new List<SellerSortingInfo>();
+                tempList.Add(new SellerSortingInfo(sellers[0].username, countSellerSells(sellers[0].username)));
+                return tempList;
+            }
+
+            List<SellerSortingInfo> sortedSellers = new List<SellerSortingInfo>();
+
+            sortedSellers.Add(new SellerSortingInfo(sellers[0].username, countSellerSells(sellers[0].username)));
+
+
+            foreach(Seller seller in sellers)
+            {
+                int productsSold = countSellerSells(seller.username);
+
+                bool isNotLast = true;
+
+                for(int index = 1; index < sortedSellers.Count(); index++)
+                {
+                    if(productsSold >= sortedSellers[0].numberOfSales)
+                    {
+                        sortedSellers.Insert(index, new SellerSortingInfo(seller.username, productsSold));
+                        isNotLast = false;
+                        break;
+                    }
+                }
+
+                if (!isNotLast)
+                {
+                    sortedSellers.Add(new SellerSortingInfo(seller.username, productsSold));
+                }
+
+            }
+
+            return sortedSellers;
+        }
+        
+        public static List<SellerSortingInfo> getTopN_SellerByAttribute(string attribute, int numberOfTop)
+        {
+            List<Seller> sellers = UserManager.getSellers();
+
+            return sortSellerListBy(sellers, attribute).GetRange(0, numberOfTop);
+        }
+
     }
 }
