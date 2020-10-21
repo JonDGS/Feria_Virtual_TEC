@@ -43,11 +43,12 @@ namespace Feria_Virtual_REST.Models
     public static class JsonManager
     {
 
-        private static string pathToProjectAdmin = AppDomain.CurrentDomain.BaseDirectory + "/Database/admins.json";
-        private static string pathToProjectClient = AppDomain.CurrentDomain.BaseDirectory + "/Database/clients.json";
-        private static string pathToProjectSeller = AppDomain.CurrentDomain.BaseDirectory + "/Database/sellers.json";
-        private static string pathToProjectProduct = AppDomain.CurrentDomain.BaseDirectory + "/Database/products.json";
-        private static string pathToProjectOrder = AppDomain.CurrentDomain.BaseDirectory + "/Database/orders.json";
+        private static string pathToProjectAdmin = "C:/Users/Dxnium/OneDrive - Estudiantes ITCR/TEC/DB/Tareas/TC#1/Feria_Virtual_TEC/REST_api/Database/admins.json";
+        private static string pathToProjectClient = "C:/Users/Dxnium/OneDrive - Estudiantes ITCR/TEC/DB/Tareas/TC#1/Feria_Virtual_TEC/REST_api/Database/clients.json";
+        private static string pathToProjectClient = " C:/Users/Dxnium/OneDrive - Estudiantes ITCR/TEC/DB/Tareas/TC#1/Feria_Virtual_TEC/REST_api/Database/clients.json";
+        private static string pathToProjectSeller = "C:/Users/Dxnium/OneDrive - Estudiantes ITCR/TEC/DB/Tareas/TC#1/Feria_Virtual_TEC/REST_api/Database/sellers.json";
+        private static string pathToProjectProduct = "C:/Users/Dxnium/OneDrive - Estudiantes ITCR/TEC/DB/Tareas/TC#1/Feria_Virtual_TEC/REST_api/Database/products.json";
+        
         /**
          * Description: Save current users to a json file in database
          * Parameters:
@@ -110,22 +111,6 @@ namespace Feria_Virtual_REST.Models
             }
             string resultJsonProducts = JsonConvert.SerializeObject(listProducts);
             File.WriteAllText(pathToProjectProduct, resultJsonProducts);
-        }
-        /*
-       * Description: Serialize the order data and save it to DB
-       * Parameters: Linked list that contains all the or
-       * Return: none
-       */
-        public static void saveOrder(LinkedList<Order> orders)
-        {
-            List<Order> listOrders = new List<Order>();
-
-            foreach (Order order in orders)
-            {
-                listOrders.Add(order);
-            }
-            string resultJsonOrders = JsonConvert.SerializeObject(listOrders);
-            File.WriteAllText(pathToProjectOrder, resultJsonOrders);
         }
 
         /*
@@ -191,65 +176,6 @@ namespace Feria_Virtual_REST.Models
             }
             return new LinkedList<Product>();
         }
-        /*
-        * Description: Retrieve the orders form DB
-        * Parameters: None
-        * Return: All the orders loaded in DB
-        */
-        public static LinkedList<Order> retrieveOrder()
-        {
-
-            List<Order> listOrders = JsonConvert.DeserializeObject<List<Order>>(File.ReadAllText(@pathToProjectOrder));
-            if (listOrders is List<Order>)
-            {
-                LinkedList<Order> tempOrders = new LinkedList<Order>();
-
-                foreach (Order order in listOrders)
-                {
-                    tempOrders.AddLast(order);
-
-                }
-
-                return tempOrders;
-            }
-            return new LinkedList<Order>();
-        }
-        /*
-        * Description: Convert string to list 
-        * Parameters: string in JSON format
-        * Return: List of products
-        */
-        public static List<Product> convertStringToList(string productsListInJsonFormat)
-        {
-
-            List<Product> listProduct = JsonConvert.DeserializeObject<List<Product>>(productsListInJsonFormat);
-            
-            return listProduct;
-        }
-        /*
-        * Description: Convert order list to string
-        * Parameters: string in JSON format
-        * Return: List of orders assigned to a seller
-        */
-        public static string convertListToJson(List<Order> assignedOrderList)
-        {
-            
-            string listOrderInJson = JsonConvert.SerializeObject(assignedOrderList);
-
-            return listOrderInJson;
-        }
-        /*
-        * Description: Convert product list to string
-        * Parameters: string in JSON format
-        * Return: List of orders assigned to a seller
-        */
-        public static string convertListToJson(List<Product> assignedProductList)
-        {
-
-            string listOrderInJson = JsonConvert.SerializeObject(assignedProductList);
-
-            return listOrderInJson;
-        }
 
         public static List<Seller> getSellers()
         {
@@ -289,12 +215,6 @@ namespace Feria_Virtual_REST.Models
             string admins = File.ReadAllText(@pathToProjectProduct);
 
             return admins;
-        }
-        public static string getOrderJSON_String()
-        {
-            string orders = File.ReadAllText(@pathToProjectOrder);
-
-            return orders;
         }
     }
 }

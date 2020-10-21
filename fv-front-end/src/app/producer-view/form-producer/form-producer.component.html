@@ -1,8 +1,7 @@
 <form class="form-producer" (ngSubmit)="onSubmit()" #newProducerForm="ngForm">
   <h1>Solicitudes para Provedores</h1>
   <div class="from-group" ngModelGroup="fullName">
-    <div class="row" >
-
+    <div class="row">
       <!--First Name-->
       <div class="col-md-6 mb-3">
         <input
@@ -11,7 +10,8 @@
           placeholder="Nombre"
           ngModel
           name="newProducerName"
-          required/>
+          required
+        />
       </div>
 
       <!--Last Name-->
@@ -22,13 +22,13 @@
           placeholder="Apellido"
           ngModel
           name="newProducerLastName"
-          required/>
+          required
+        />
       </div>
     </div>
   </div>
   <div class="form-group">
     <div class="row">
-
       <!--ID-->
       <div class="col-md-6">
         <input
@@ -37,7 +37,8 @@
           placeholder="Cédula"
           ngModel
           name="newProducerID"
-          required/>
+          required
+        />
       </div>
 
       <!--Birthday-->
@@ -49,7 +50,8 @@
           data-date-split-input="true"
           ngModel
           name="newProducerBirthday"
-          required/>
+          required
+        />
       </div>
     </div>
   </div>
@@ -57,7 +59,6 @@
   <!--Location-->
   <div class="form-group" ngModelGroup="location">
     <div class="row">
-
       <!--Province-->
       <div class="col-md">
         <input
@@ -66,7 +67,8 @@
           placeholder="Provincia"
           ngModel
           name="newProducerProvince"
-          required/>
+          required
+        />
       </div>
 
       <!--Canton-->
@@ -77,7 +79,8 @@
           placeholder="Cantón"
           ngModel
           name="newProducerCanton"
-          required/>
+          required
+        />
       </div>
 
       <!--District-->
@@ -88,13 +91,13 @@
           placeholder="Distrito"
           ngModel
           name="newProducerDistrict"
-          required/>
+          required
+        />
       </div>
     </div>
   </div>
   <div class="form-group">
     <div class="row">
-
       <!--Phone-->
       <div class="col">
         <input
@@ -103,7 +106,8 @@
           placeholder="Teléfono"
           ngModel
           name="newProducerPhone"
-          required/>
+          required
+        />
       </div>
 
       <!--SINPE-->
@@ -114,7 +118,8 @@
           placeholder="SINPE"
           ngModel
           name="newProducerSINPE"
-          required/>
+          required
+        />
       </div>
     </div>
   </div>
@@ -127,12 +132,23 @@
       placeholder="Lugares de entrega"
       ngModel
       name="newProducerDeliveryLocation"
-      required/>
+      required
+    />
+  </div>
+  <!--Email-->
+  <div class="form-group">
+    <input
+      type="email"
+      class="form-control"
+      placeholder="Correo"
+      ngModel
+      name="newProducerEmail"
+      required
+    />
   </div>
   <div class="form-group">
     <div class="row">
       <div class="col">
-
         <!--Username-->
         <div class="input-group mb-2">
           <div class="input-group-prepend">
@@ -145,7 +161,8 @@
             placeholder="Usuario"
             ngModel
             name="newProducerUsername"
-            required/>
+            required
+          />
         </div>
       </div>
 
@@ -157,7 +174,8 @@
           placeholder="contraseña"
           ngModel
           name="newProducerPassword"
-          required/>
+          required
+        />
       </div>
     </div>
   </div>
@@ -167,7 +185,9 @@
         class="btn btn-success"
         type="submit"
         [disabled]="!newProducerForm.valid"
-        >Enviar solicitud</button>
+      >
+        Enviar solicitud
+      </button>
     </div>
   </div>
 </form>
