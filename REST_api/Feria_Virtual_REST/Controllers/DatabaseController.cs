@@ -7,11 +7,9 @@ using System.Net;
 using System.Net.Http;
 using System.Web;
 using System.Web.Http;
-using System.Web.Http.Cors;
 
 namespace Feria_Virtual_REST.Controllers
 {
-    [EnableCors(origins: "http://localhost:4200", headers: "*", methods: "*")]
     public class DatabaseController : ApiController
     {
         [Route("api/Database/{who}")]
@@ -48,6 +46,8 @@ namespace Feria_Virtual_REST.Controllers
                         return Request.CreateResponse(HttpStatusCode.OK, JsonManager.getAdminJSON_String());
                     case "Products":
                         return Request.CreateResponse(HttpStatusCode.OK, JsonManager.getProductJSON_String());
+                    case "Orders":
+                        return Request.CreateResponse(HttpStatusCode.OK, JsonManager.getOrderJSON_String());
                     default:
                         return Request.CreateResponse(HttpStatusCode.BadRequest);
                 }
@@ -60,6 +60,31 @@ namespace Feria_Virtual_REST.Controllers
             return Request.CreateResponse(HttpStatusCode.Unauthorized);
 
         }
+        [Route("api/Database/GetOrdersFrom/{who}")]
+        /*
+         * Description: Show all the order assigned to a seller
+         * Parameters: who -> seller
+         * Return: Seller's orders
+         */
+        public HttpResponseMessage getOrdersFromProducer(string who, [FromUri] string token)
+        {
+
+             if (UserManager.doesUsernameMatchesType(TokenManager.getUsernameFromToken(token), "Seller"))
+            {
+                LinkedList<Order> currentOrderList = OrderManager.registeredOrders;
+                List<Order> orderAssignedToSeller = new List<Order>();
+                foreach (Order order in currentOrderList) {
+                    if (order.sellerAssigned.Equals(who)) {
+                        orderAssignedToSeller.Add(order);
+                        
+                    }
+                }
+                return Request.CreateResponse(HttpStatusCode.OK, JsonManager.convertListToJson(orderAssignedToSeller));
+            }
+            return Request.CreateResponse(HttpStatusCode.Unauthorized);
+
+        }
+
         [Route("api/Database/Create/Product")]
         /*
         * Description: Http request for adding a product
@@ -84,7 +109,28 @@ namespace Feria_Virtual_REST.Controllers
             return Request.CreateResponse(HttpStatusCode.Unauthorized);
 
         }
+        [Route("api/Database/Create/Order")]
+        /*
+        * Description: Http request for adding an order
+        * Parameters: All the atributes of Order class
+        * Return: none
+        */
+        public HttpResponseMessage addOrder([FromUri] int ID, [FromUri] string addressToDeliver, [FromUri] string sellerAssigned, [FromUri] string productsListInJsonFormat, [FromUri] string token)
+        { 
+            if (UserManager.doesUsernameMatchesType(TokenManager.getUsernameFromToken(token), "Client"))
+            {
+               
+                Order newOrder = new Order(ID, addressToDeliver,sellerAssigned,JsonManager.convertStringToList(productsListInJsonFormat));
 
+                OrderManager.registerOrder(newOrder);
+
+                return new HttpResponseMessage(HttpStatusCode.Accepted);
+
+            }
+
+            return Request.CreateResponse(HttpStatusCode.Unauthorized);
+
+        }
 
         /**
          * Description: Access for modifying an attribute of a user

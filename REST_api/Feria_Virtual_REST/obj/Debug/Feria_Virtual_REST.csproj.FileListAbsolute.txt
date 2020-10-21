@@ -338,6 +338,3 @@ C:\Users\SMZ19\OneDrive\Documentos\GitHub\Feria_Virtual_TEC\REST_api\Feria_Virtu
 C:\Users\SMZ19\OneDrive\Documentos\GitHub\Feria_Virtual_TEC\REST_api\Feria_Virtual_REST\obj\Debug\Feria_Virtual_REST.csproj.CopyComplete
 C:\Users\SMZ19\OneDrive\Documentos\GitHub\Feria_Virtual_TEC\REST_api\Feria_Virtual_REST\obj\Debug\Feria_Virtual_REST.dll
 C:\Users\SMZ19\OneDrive\Documentos\GitHub\Feria_Virtual_TEC\REST_api\Feria_Virtual_REST\obj\Debug\Feria_Virtual_REST.pdb
-C:\Users\Dxnium\OneDrive - Estudiantes ITCR\TEC\DB\Tareas\TC#1\Feria_Virtual_TEC\REST_api\Feria_Virtual_REST\bin\System.Web.Cors.dll
-C:\Users\Dxnium\OneDrive - Estudiantes ITCR\TEC\DB\Tareas\TC#1\Feria_Virtual_TEC\REST_api\Feria_Virtual_REST\bin\System.Web.Http.Cors.dll
-C:\Users\Dxnium\OneDrive - Estudiantes ITCR\TEC\DB\Tareas\TC#1\Feria_Virtual_TEC\REST_api\Feria_Virtual_REST\bin\System.Web.Http.Cors.xml

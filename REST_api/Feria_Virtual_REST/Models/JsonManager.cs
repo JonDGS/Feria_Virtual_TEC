@@ -15,6 +15,7 @@ using System.Web;
  * D:/OneDrive TEC/OneDrive - Estudiantes ITCR/GITHUB/Feria_Virtual_TEC/REST_api/Database/clients.json
  * D:/OneDrive TEC/OneDrive - Estudiantes ITCR/GITHUB/Feria_Virtual_TEC/REST_api/Database/sellers.json
  * D:/OneDrive TEC/OneDrive - Estudiantes ITCR/GITHUB/Feria_Virtual_TEC/REST_api/Database/products.json
+ * D:/OneDrive TEC/OneDrive - Estudiantes ITCR/GITHUB/Feria_Virtual_TEC/REST_api/Database/orders.json
  */
 
 /* Desktop
@@ -22,10 +23,7 @@ using System.Web;
  * E:/OneDriveTEC/OneDrive - Estudiantes ITCR/GITHUB/Feria_Virtual_TEC/REST_api/Database/clients.json
  * E:/OneDriveTEC/OneDrive - Estudiantes ITCR/GITHUB/Feria_Virtual_TEC/REST_api/Database/sellers.json
  * E:/OneDriveTEC/OneDrive - Estudiantes ITCR/GITHUB/Feria_Virtual_TEC/REST_api/Database/products.json
- */
-
-/*
- * C:/Users/Dxnium/OneDrive - Estudiantes ITCR/TEC/DB/Tareas/TC#1/Feria_Virtual_TEC/REST_api/Database
+ * E:/OneDrive TEC/OneDrive - Estudiantes ITCR/GITHUB/Feria_Virtual_TEC/REST_api/Database/orders.json
  */
 
 /*
@@ -33,6 +31,7 @@ using System.Web;
  * C:/Users/SMZ19/OneDrive/Documentos/GitHub/Feria_Virtual_TEC/REST_api/Database/clients.json   
  * C:/Users/SMZ19/OneDrive/Documentos/GitHub/Feria_Virtual_TEC/REST_api/Database/sellers.json
  * C:/Users/SMZ19/OneDrive/Documentos/GitHub/Feria_Virtual_TEC/REST_api/Database/products.json
+ * C:/Users/SMZ19/OneDrive/Documentos/GitHub/Feria_Virtual_TEC/REST_api/Database/orders.json
 */
 
 namespace Feria_Virtual_REST.Models
@@ -40,11 +39,11 @@ namespace Feria_Virtual_REST.Models
     public static class JsonManager
     {
 
-        private static string pathToProjectAdmin = "C:/Users/Dxnium/OneDrive - Estudiantes ITCR/TEC/DB/Tareas/TC#1/Feria_Virtual_TEC/REST_api/Database/admins.json";
-        private static string pathToProjectClient = "C:/Users/Dxnium/OneDrive - Estudiantes ITCR/TEC/DB/Tareas/TC#1/Feria_Virtual_TEC/REST_api/Database/clients.json";
-        private static string pathToProjectSeller = "C:/Users/Dxnium/OneDrive - Estudiantes ITCR/TEC/DB/Tareas/TC#1/Feria_Virtual_TEC/REST_api/Database/sellers.json";
-        private static string pathToProjectProduct = "C:/Users/Dxnium/OneDrive - Estudiantes ITCR/TEC/DB/Tareas/TC#1/Feria_Virtual_TEC/REST_api/Database/products.json";
-        
+        private static string pathToProjectAdmin = "C:/Users/SMZ19/OneDrive/Documentos/GitHub/Feria_Virtual_TEC/REST_api/Database/admins.json";
+        private static string pathToProjectClient = "C:/Users/SMZ19/OneDrive/Documentos/GitHub/Feria_Virtual_TEC/REST_api/Database/clients.json";
+        private static string pathToProjectSeller = "C:/Users/SMZ19/OneDrive/Documentos/GitHub/Feria_Virtual_TEC/REST_api/Database/sellers.json";
+        private static string pathToProjectProduct = "C:/Users/SMZ19/OneDrive/Documentos/GitHub/Feria_Virtual_TEC/REST_api/Database/products.json";
+        private static string pathToProjectOrder = "C:/Users/SMZ19/OneDrive/Documentos/GitHub/Feria_Virtual_TEC/REST_api/Database/orders.json";
         /**
          * Description: Save current users to a json file in database
          * Parameters:
@@ -107,6 +106,22 @@ namespace Feria_Virtual_REST.Models
             }
             string resultJsonProducts = JsonConvert.SerializeObject(listProducts);
             File.WriteAllText(pathToProjectProduct, resultJsonProducts);
+        }
+        /*
+       * Description: Serialize the order data and save it to DB
+       * Parameters: Linked list that contains all the or
+       * Return: none
+       */
+        public static void saveOrder(LinkedList<Order> orders)
+        {
+            List<Order> listOrders = new List<Order>();
+
+            foreach (Order order in orders)
+            {
+                listOrders.Add(order);
+            }
+            string resultJsonOrders = JsonConvert.SerializeObject(listOrders);
+            File.WriteAllText(pathToProjectOrder, resultJsonOrders);
         }
 
         /*
@@ -172,6 +187,53 @@ namespace Feria_Virtual_REST.Models
             }
             return new LinkedList<Product>();
         }
+        /*
+        * Description: Retrieve the orders form DB
+        * Parameters: None
+        * Return: All the orders loaded in DB
+        */
+        public static LinkedList<Order> retrieveOrder()
+        {
+
+            List<Order> listOrders = JsonConvert.DeserializeObject<List<Order>>(File.ReadAllText(@pathToProjectOrder));
+            if (listOrders is List<Order>)
+            {
+                LinkedList<Order> tempOrders = new LinkedList<Order>();
+
+                foreach (Order order in listOrders)
+                {
+                    tempOrders.AddLast(order);
+
+                }
+
+                return tempOrders;
+            }
+            return new LinkedList<Order>();
+        }
+        /*
+        * Description: Convert string to list 
+        * Parameters: string in JSON format
+        * Return: List of products
+        */
+        public static List<Product> convertStringToList(string productsListInJsonFormat)
+        {
+
+            List<Product> listProduct = JsonConvert.DeserializeObject<List<Product>>(productsListInJsonFormat);
+            
+            return listProduct;
+        }
+        /*
+        * Description: Convert list to string
+        * Parameters: string in JSON format
+        * Return: List of orders assigned to a seller
+        */
+        public static string convertListToJson(List<Order> assignedOrderList)
+        {
+            
+            string listOrderInJson = JsonConvert.SerializeObject(assignedOrderList);
+
+            return listOrderInJson;
+        }
 
         public static List<Seller> getSellers()
         {
@@ -211,6 +273,12 @@ namespace Feria_Virtual_REST.Models
             string admins = File.ReadAllText(@pathToProjectProduct);
 
             return admins;
+        }
+        public static string getOrderJSON_String()
+        {
+            string orders = File.ReadAllText(@pathToProjectOrder);
+
+            return orders;
         }
     }
 }
