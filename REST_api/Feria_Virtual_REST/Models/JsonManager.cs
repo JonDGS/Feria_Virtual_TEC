@@ -223,7 +223,7 @@ namespace Feria_Virtual_REST.Models
             return listProduct;
         }
         /*
-        * Description: Convert list to string
+        * Description: Convert order list to string
         * Parameters: string in JSON format
         * Return: List of orders assigned to a seller
         */
@@ -231,6 +231,18 @@ namespace Feria_Virtual_REST.Models
         {
             
             string listOrderInJson = JsonConvert.SerializeObject(assignedOrderList);
+
+            return listOrderInJson;
+        }
+        /*
+        * Description: Convert product list to string
+        * Parameters: string in JSON format
+        * Return: List of orders assigned to a seller
+        */
+        public static string convertListToJson(List<Product> assignedProductList)
+        {
+
+            string listOrderInJson = JsonConvert.SerializeObject(assignedProductList);
 
             return listOrderInJson;
         }
