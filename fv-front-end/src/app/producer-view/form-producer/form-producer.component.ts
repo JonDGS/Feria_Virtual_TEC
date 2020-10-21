@@ -37,7 +37,8 @@ export class FormProducerComponent implements OnInit {
       this.producerForm.value.newProducerSINPE,
       this.producerForm.value.newProducerDeliveryLocation,
       this.producerForm.value.newProducerUsername,
-      this.producerForm.value.newProducerPassword
+      this.producerForm.value.newProducerPassword,
+      ''
     );
 
     console.log(this.producer);
