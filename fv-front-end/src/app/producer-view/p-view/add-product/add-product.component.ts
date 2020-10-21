@@ -19,7 +19,7 @@ export class AddProductComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onSubmit(newProductForm){
+  onSubmit(){
     this.product = new Product(
       this.productForm.value.newProductName,
       new Category(this.productForm.value.newProductCategory, 0),

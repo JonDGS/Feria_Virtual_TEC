@@ -63,7 +63,7 @@ export class ServerService {
   }
   
   addProduct(p: Product){
-    this.http.post(`http://localhost:55172/api/Database/Create/Product?pName=${p.name}&category=${p.category.name}&price=${p.price}&packageMode=${p.unit}&availability=${p.availability}&token=${this.token}`,"").subscribe(
+    this.http.post(`http://localhost:55172/api/Database/Create/Product?pName=${p.name}&category=${p.category.name}&price=${p.price}&packageMode=${p.unit}&availability=${p.availability}&token=ea4113cc-f52e-4d8c-a576-b372376d4c17`,"").subscribe(
       res=>{
         console.log(res);
       }

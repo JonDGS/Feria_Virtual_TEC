@@ -20,6 +20,7 @@ export class PViewComponent implements OnInit {
         let products;
         products = res;
         this.products = JSON.parse(products)
+        console.log(this.products)
       })
     }
 
