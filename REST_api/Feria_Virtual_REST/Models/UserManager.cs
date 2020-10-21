@@ -25,6 +25,22 @@ namespace Feria_Virtual_REST.Models
             registerUsers.AddLast(newUser);
             JsonManager.saveUsers(registerUsers);
         }
+        /*
+         * Description: Deletes a user in the database
+         * Parameter: usernameToDelete
+         * return: bool
+         */
+        public static bool deleteUser(string usernameToDelete)
+        {
+            foreach(User user in registerUsers) {
+                if (user.username.Equals(usernameToDelete)) {
+                    registerUsers.Remove(user);
+                    JsonManager.saveUsers(registerUsers);
+                    return true;
+                }
+            }
+            return false;
+        }
 
         /*
          * Validates the credentials for a user
@@ -314,19 +330,5 @@ namespace Feria_Virtual_REST.Models
 
         }
 
-        public static List<Seller> getSellers()
-        {
-            List<Seller> tempList = new List<Seller>();
-            
-            foreach(User user in registerUsers)
-            {
-                if(user.type == "Seller")
-                {
-                    tempList.Add((Seller)user);
-                }
-            }
-
-            return tempList;
-        }
     }
 }
