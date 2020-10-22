@@ -28,40 +28,82 @@ export class ServerService {
   ];
 
   constructor(public http: HttpClient) {}
-
+/*
+  funtion: addProducerRequest
+  Description: add a new producer to the list of producers
+  Params : producer
+  Return: void
+*/
   addProducerRequest(producer) {
     this.producersRequestsObj.push(producer);
   }
-
+/*
+  funtion: producerRequests
+  Description: simple return the producers request obj list 
+  Params : view
+  Return: Producer
+*/
   producerRequests() {
     return this.producersRequestsObj;
   }
-
+/*
+  funtion: addCategory
+  Description: add a new category to database
+  Params : category
+  Return: void
+*/
   addCategory(category){
     this.categoryList.push(category);
     this.categoryID++;
   }
-
+/*
+  funtion: getProducers
+  Description: return the list of producers 
+  Params : view
+  Return: listProducers
+*/
   getProducers(){
     return this.producerList.slice();
   }
-
+/*
+  funtion: register
+  Description: regiter a new users to the database 
+  Params : 
+  Return: void
+*/
   register(){
     this.http.post('http://localhost:55172/api/Register/Admin?user=sergio&email=sergio@admin.com&password=hola1234',"").subscribe(response=>{
       console.log(response)
     })
   }
+
+/*
+  funtion: login
+  Description: post to request the login and get the token
+  Params : username, email , password
+  Return: void
+*/
   login(username,email,password){
      this.http.post(`http://localhost:55172/api/LogIn?user=${username}&email=${email}&password=${password}`,"").subscribe(res=>{
       console.log(res);
       this.token = res;
     })
   }
-
+  /*
+    funtion: products
+    Description: this method returns the products list by the token
+    Params : view
+    Return: productsList
+  */
   products(){
     return this.http.get(`http://localhost:55172/api/Database/Products?token=${this.token}`)
   }
-  
+  /*
+  funtion: addProduct
+  Description: this method chacnge the current selecte compnent shown on the view 
+  Params : view
+  Return: void
+*/
   addProduct(p: Product){
     this.http.post(`http://localhost:55172/api/Database/Create/Product?pName=${p.name}&category=${p.category.name}&price=${p.price}&packageMode=${p.unit}&availability=${p.availability}&token=ea4113cc-f52e-4d8c-a576-b372376d4c17`,"").subscribe(
       res=>{

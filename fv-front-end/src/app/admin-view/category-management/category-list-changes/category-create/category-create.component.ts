@@ -7,6 +7,9 @@ import {Category} from '../../../../models/category.model';
   templateUrl: './category-create.component.html',
   styleUrls: ['./category-create.component.css']
 })
+/**
+ * This component is used for adding a new category
+ */
 export class CategoryCreateComponent implements OnInit {
   @ViewChild('nameInput') nameInputRef: ElementRef;
 
@@ -15,6 +18,9 @@ export class CategoryCreateComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /**
+   * This method is called when the form for adding a new category is submitted
+   */
   onAddCategory(){
     const catName = this.nameInputRef.nativeElement.value;
     const catID = this.serverService.categoryID;

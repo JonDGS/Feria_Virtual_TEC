@@ -7,6 +7,9 @@ import {ServerService} from '../../server.service';
   templateUrl: './producer-management.component.html',
   styleUrls: ['./producer-management.component.css']
 })
+/**
+ * This component holds the info related to the producer management of the admin
+ */
 export class ProducerManagementComponent implements OnInit {
   selectedProducer: Producer;
 

@@ -13,7 +13,12 @@ export class LoginProducerComponent implements OnInit {
   constructor(private server: ServerService) {}
 
   ngOnInit(): void {}
-
+/*
+  funtion: login
+  Description: log an user to application
+  Params : log
+  Return: void
+*/
   login(log: string){
     
     let username = this.producerForm.value.username;

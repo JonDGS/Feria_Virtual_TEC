@@ -7,6 +7,9 @@ import {Producer} from '../../../models/producer.model';
   templateUrl: './producer-list.component.html',
   styleUrls: ['./producer-list.component.css']
 })
+/**
+ * This component holds a list of producers item from which the admin can select specific items
+ */
 export class ProducerListComponent implements OnInit {
   producers: Producer[];
 

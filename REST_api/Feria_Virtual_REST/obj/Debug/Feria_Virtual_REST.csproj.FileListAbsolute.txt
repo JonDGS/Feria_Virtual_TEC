@@ -377,3 +377,4 @@ E:\OneDriveTEC\OneDrive - Estudiantes ITCR\GITHUB\Feria_Virtual_TEC\REST_api\Fer
 E:\OneDriveTEC\OneDrive - Estudiantes ITCR\GITHUB\Feria_Virtual_TEC\REST_api\Feria_Virtual_REST\bin\System.Text.Encodings.Web.xml
 E:\OneDriveTEC\OneDrive - Estudiantes ITCR\GITHUB\Feria_Virtual_TEC\REST_api\Feria_Virtual_REST\bin\System.Web.Http.Cors.xml
 E:\OneDriveTEC\OneDrive - Estudiantes ITCR\GITHUB\Feria_Virtual_TEC\REST_api\Feria_Virtual_REST\bin\System.Web.Cors.dll
+C:\Users\Dxnium\OneDrive - Estudiantes ITCR\TEC\DB\Tareas\TC#1\Feria_Virtual_TEC\REST_api\Feria_Virtual_REST\bin\System.Buffers.dll

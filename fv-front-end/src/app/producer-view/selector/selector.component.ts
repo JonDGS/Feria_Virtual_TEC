@@ -9,7 +9,12 @@ import { Component, OnInit } from '@angular/core';
 export class SelectorComponent {
   currentActivate = 'login';
   constructor(public server : ServerService) {}
-
+/*
+  funtion: onSelectView
+  Description: chage the current view selected 
+  Params : view : string 
+  Return: void
+*/
   onSelectView(view: string) {
     this.currentActivate = view;
   }
