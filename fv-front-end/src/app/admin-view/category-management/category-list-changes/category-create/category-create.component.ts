@@ -1,6 +1,7 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {ServerService} from '../../../../server.service';
 import {Category} from '../../../../models/category.model';
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-category-create',
@@ -8,7 +9,7 @@ import {Category} from '../../../../models/category.model';
   styleUrls: ['./category-create.component.css']
 })
 export class CategoryCreateComponent implements OnInit {
-  @ViewChild('nameInput') nameInputRef: ElementRef;
+  @ViewChild('newCategoryForm') categoryForm: NgForm;
 
   constructor(private serverService: ServerService) { }
 
@@ -16,9 +17,15 @@ export class CategoryCreateComponent implements OnInit {
   }
 
   onAddCategory(){
-    const catName = this.nameInputRef.nativeElement.value;
+    const catName = this.categoryForm.value.newCategoryName;
     const catID = this.serverService.categoryID;
     const newCategory = new Category(catName, catID);
+
     this.serverService.addCategory(newCategory);
+
+    console.log(newCategory);
+
+    this.categoryForm.reset();
   }
 }
+
