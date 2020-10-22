@@ -8,7 +8,12 @@ import { Component } from '@angular/core';
 export class ClientSelectorComponent  {
   currentActivate = 'login';
   constructor() {}
-
+/*
+  funtion: onSelectView
+  Description: this method chacnge the current selecte compnent shown on the view 
+  Params : view
+  Return: void
+*/
   onSelectView(view: string) {
     this.currentActivate = view;
   }

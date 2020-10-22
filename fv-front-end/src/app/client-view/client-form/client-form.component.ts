@@ -17,7 +17,12 @@ export class ClientFormComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+/*
+  funtion: onSubmitClient
+  Description: this method chacnge the current selecte compnent shown on the view 
+  Params : 
+  Return: void
+*/
   onSubmitClient(){
     this.address = this.clientForm.value.location.newClientProvince + ', ' +
       this.clientForm.value.location.newClientCanton + ', ' +

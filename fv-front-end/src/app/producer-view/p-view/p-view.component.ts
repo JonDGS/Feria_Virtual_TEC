@@ -14,7 +14,12 @@ export class PViewComponent implements OnInit {
   ngOnInit(): void {
     this.getProdcuts();
   }
-
+/*
+  funtion: getProdcuts
+  Description: get the list of products to fill the componets
+  Params : 
+  Return: listProducts fill
+*/
   getProdcuts(){
       this.server.products().subscribe(res => {
         let products;

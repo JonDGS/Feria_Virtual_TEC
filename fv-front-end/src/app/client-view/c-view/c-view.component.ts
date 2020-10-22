@@ -12,7 +12,12 @@ export class CViewComponent{
   constructor(private server:ServerService) { 
     this.getProdructs();
   }
-
+/*
+  funtion: getProdructs
+  Description: get all the products and suscribe to parse the message to json object 
+  Params : 
+  Return: void
+*/
   getProdructs(){
     this.server.products().subscribe( list =>{
       let products;
