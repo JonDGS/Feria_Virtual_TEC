@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography;
-using System.Threading;
-using System.Web;
-using System.Web.Hosting;
-using System.Web.ModelBinding;
-using System.Web.UI.WebControls;
 
 namespace Feria_Virtual_REST.Models
 {
@@ -34,7 +27,8 @@ namespace Feria_Virtual_REST.Models
         {
             foreach (Product product in registeredProducts)
             {
-                if (product.seller.Equals(username)) {
+                if (product.seller.Equals(username))
+                {
                     if (product.pName.Equals(productToDelete))
                     {
                         registeredProducts.Remove(product);
@@ -53,13 +47,13 @@ namespace Feria_Virtual_REST.Models
         public static bool deleteProduct(string username)
         {
             var index = registeredProducts.First;
-            while(index != null)
+            while (index != null)
             {
                 var nextIndex = index.Next;
                 if (index.Value.seller.Equals(username))
                 {
                     registeredProducts.Remove(index);
-                    
+
 
                 }
                 index = nextIndex;
@@ -72,7 +66,7 @@ namespace Feria_Virtual_REST.Models
         {
             List<Product> sellerProducts = new List<Product>();
 
-            foreach(Product product in registeredProducts)
+            foreach (Product product in registeredProducts)
             {
                 if (product.seller.Equals(user))
                 {
@@ -80,7 +74,7 @@ namespace Feria_Virtual_REST.Models
                 }
             }
 
-            if(sellerProducts.Count == 0)
+            if (sellerProducts.Count == 0)
             {
                 return null;
             }
@@ -90,15 +84,15 @@ namespace Feria_Virtual_REST.Models
 
         public static List<Product> sortProductListBy(List<Product> products, string attribute)
         {
-            if(products.Count == 1)
+            if (products.Count == 1)
             {
                 return products;
             }
 
             List<Product> sortedProducts = new List<Product>();
             sortedProducts.Add(products[0]);
-            
-            for(int outerIndex = 1; outerIndex < products.Count; outerIndex++)
+
+            for (int outerIndex = 1; outerIndex < products.Count; outerIndex++)
             {
                 Product currentProduct = products[outerIndex];
 
@@ -142,10 +136,10 @@ namespace Feria_Virtual_REST.Models
 
             return sortedProducts;
 
-            
+
         }
-        
-        
+
+
         public static List<Product> getTopN_ProductsPerSellerByAttribute(string user, string attribute, int numberOfTop)
         {
             List<Product> sellerProducts = getProductsBasedOnSeller(user);
@@ -170,7 +164,7 @@ namespace Feria_Virtual_REST.Models
         {
             int counter = 0;
 
-            foreach(Product product in registeredProducts)
+            foreach (Product product in registeredProducts)
             {
                 if (product.seller.Equals(user))
                 {
@@ -179,7 +173,7 @@ namespace Feria_Virtual_REST.Models
             }
 
             return counter;
-            
+
         }
 
         public static List<SellerSortingInfo> sortSellerListBy(List<Seller> sellers, string attribute)
@@ -196,15 +190,15 @@ namespace Feria_Virtual_REST.Models
             sortedSellers.Add(new SellerSortingInfo(sellers[0].username, countSellerSells(sellers[0].username)));
 
 
-            foreach(Seller seller in sellers)
+            foreach (Seller seller in sellers)
             {
                 int productsSold = countSellerSells(seller.username);
 
                 bool isNotLast = true;
 
-                for(int index = 1; index < sortedSellers.Count(); index++)
+                for (int index = 1; index < sortedSellers.Count(); index++)
                 {
-                    if(productsSold >= sortedSellers[0].numberOfSales)
+                    if (productsSold >= sortedSellers[0].numberOfSales)
                     {
                         sortedSellers.Insert(index, new SellerSortingInfo(seller.username, productsSold));
                         isNotLast = false;
@@ -221,12 +215,66 @@ namespace Feria_Virtual_REST.Models
 
             return sortedSellers;
         }
-        
+
         public static List<SellerSortingInfo> getTopN_SellerByAttribute(string attribute, int numberOfTop)
         {
             List<Seller> sellers = UserManager.getSellers();
 
             return sortSellerListBy(sellers, attribute).GetRange(0, numberOfTop);
+        }
+
+        public static List<Product> getTopN_Products(string attribute, int number)
+        {
+            List<Product> sortedProducts = new List<Product>();
+
+            bool firstDone = false;
+
+            foreach (Product product in registeredProducts)
+            {
+                if (firstDone)
+                {
+                    switch (attribute)
+                    {
+
+                        case "Sold":
+
+                            for (int index = 0; index < sortedProducts.Count(); index++)
+                            {
+                                if (product.sold >= sortedProducts[index].sold)
+                                {
+                                    sortedProducts.Insert(index, product);
+                                    break;
+                                }
+
+                                sortedProducts.Add(product);
+                            }
+
+                            break;
+                        case "Revenue":
+                            for (int index = 0; index < sortedProducts.Count(); index++)
+                            {
+                                if ((product.sold * product.price) >= (sortedProducts[index].sold * sortedProducts[index].price))
+                                {
+                                    sortedProducts.Insert(index, product);
+                                    break;
+                                }
+
+                                sortedProducts.Add(product);
+                            }
+
+                            break;
+                        default:
+                            return null;
+                    }
+                }
+                else
+                {
+                    sortedProducts.Add(product);
+                    firstDone = true;
+                }
+            }
+
+            return sortedProducts.GetRange(0, number);
         }
 
     }

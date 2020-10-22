@@ -1,13 +1,9 @@
 ﻿using Feria_Virtual_REST.Models;
 using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Web;
 using System.Web.Http;
-using System.Web.UI.WebControls;
 
 namespace Feria_Virtual_REST.Controllers
 {
@@ -77,7 +73,7 @@ namespace Feria_Virtual_REST.Controllers
             return Request.CreateResponse(HttpStatusCode.Unauthorized);
         }
 
-            [Route("api/Database/GetOrdersFrom/{who}")]
+        [Route("api/Database/GetOrdersFrom/{who}")]
         /*
          * Description: Show all the order assigned to a seller
          * Parameters: who -> seller
@@ -90,8 +86,10 @@ namespace Feria_Virtual_REST.Controllers
             {
                 LinkedList<Order> currentOrderList = OrderManager.registeredOrders;
                 List<Order> orderAssignedToSeller = new List<Order>();
-                foreach (Order order in currentOrderList) {
-                    if (order.sellerAssigned.Equals(who)) {
+                foreach (Order order in currentOrderList)
+                {
+                    if (order.sellerAssigned.Equals(who))
+                    {
                         orderAssignedToSeller.Add(order);
 
                     }
@@ -186,7 +184,7 @@ namespace Feria_Virtual_REST.Controllers
          * Return: HttpStatusCode
          */
         [Route("api/Database/Delete/Sellers/{seller}")]
-        public HttpResponseMessage deleteUser(string seller,[FromUri] string token)
+        public HttpResponseMessage deleteUser(string seller, [FromUri] string token)
         {
             string username = TokenManager.getUsernameFromToken(token);
             if (UserManager.doesUsernameMatchesType(username, "Admin"))
@@ -255,12 +253,43 @@ namespace Feria_Virtual_REST.Controllers
             return Request.CreateResponse(HttpStatusCode.Unauthorized);
 
         }
-        [Route("api/Database/Report/{it}/{attribute}")]
-        public HttpResponseMessage getReport(string it, string attribute)
+        [Route("api/Database/Report/{it}/{attribute}/")]
+        public HttpResponseMessage getReport(string it, string attribute, [FromUri] int topNumber, [FromUri] string token)
         {
-            return null;
+
+            if (UserManager.doesUsernameMatchesType(TokenManager.getUsernameFromToken(token), "Admin"))
+            {
+                switch (it)
+                {
+                    case "Sellers":
+                        break;
+                    case "Products":
+                        return Request.CreateResponse(HttpStatusCode.OK, JsonConvert.SerializeObject(ProductManager.getTopN_Products(attribute, topNumber)));
+                    default:
+                        return Request.CreateResponse(HttpStatusCode.BadRequest);
+                }
+            }
+
+            return Request.CreateResponse(HttpStatusCode.Unauthorized);
         }
 
+        [Route("api/Database/Seller/{who}")]
+        public HttpResponseMessage getSeller(string who, [FromUri] string token)
+        {
+            if (UserManager.doesUsernameMatchesType(TokenManager.getUsernameFromToken(token), "Admin"))
+            {
+                Seller seller = UserManager.getSeller(who);
+
+                if (seller is Seller)
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK, JsonConvert.SerializeObject(UserManager.getSeller(who)));
+                }
+
+                return Request.CreateResponse(HttpStatusCode.NotFound, "User was not found");
+            }
+
+            return Request.CreateResponse(HttpStatusCode.Unauthorized);
+        }
 
     }
 }
