@@ -344,5 +344,22 @@ namespace Feria_Virtual_REST.Models
 
             return tempList;
         }
+
+        public static Seller getSeller(string username)
+        {
+            if (!checkUserAvailability(username))
+            {
+                foreach (User user in registerUsers)
+                {
+                    if (user.type.Equals("Seller") && user.username.Equals(username))
+                    {
+                        return (Seller)user;
+                    }
+                }
+            }
+
+            return null;
+
+        }
     }
 }
