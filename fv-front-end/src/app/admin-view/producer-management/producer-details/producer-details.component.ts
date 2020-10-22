@@ -10,8 +10,14 @@ import {ServerService} from '../../../server.service';
 export class ProducerDetailsComponent implements OnInit {
   @Input() producer: Producer;
 
-  constructor() { }
+  constructor(public server:ServerService) { }
 
+  buttonsRequets(log:string){
+    this.server.pendingRequest(log);
+    
+  }
   ngOnInit(): void {
   }
+
+
 }

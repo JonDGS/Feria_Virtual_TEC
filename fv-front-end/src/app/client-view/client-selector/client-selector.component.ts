@@ -1,3 +1,4 @@
+import { ServerService } from './../../server.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,7 +8,7 @@ import { Component } from '@angular/core';
 })
 export class ClientSelectorComponent  {
   currentActivate = 'login';
-  constructor() {}
+  constructor(public server: ServerService) {}
 
   onSelectView(view: string) {
     this.currentActivate = view;

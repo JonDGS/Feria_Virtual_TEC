@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { ServerService } from './../../server.service';
+import { NgForm } from '@angular/forms';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'client-log-in',
@@ -6,10 +8,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./client-log-in.component.css']
 })
 export class ClientLogInComponent implements OnInit {
-
-  constructor() { }
+  @ViewChild('newProducerForm') producerForm: NgForm;
+  constructor(public server: ServerService) { }
 
   ngOnInit(): void {
+  }
+  login(log: string){
+    
+    let username = this.producerForm.value.username;
+    let email = this.producerForm.value.email;
+    let password = this.producerForm.value.password;
+    this.server.login(username,email,password)
   }
 
 }

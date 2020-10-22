@@ -6,5 +6,6 @@ export class Client {
               public birthday: any,
               public phone: number,
               public user: string,
-              public password: string){}
+              public password: string,
+              public emial: string){}
 }

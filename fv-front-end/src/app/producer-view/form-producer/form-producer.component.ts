@@ -13,7 +13,7 @@ export class FormProducerComponent implements OnInit {
   producer: Producer;
   address: string;
 
-  constructor(server: ServerService) {
+  constructor(public server: ServerService) {
     // codigo de prueba para meter un registro de productor en la lista de requests de productores del server
     // server.addProducerRequest({ id: 0, name: 'producer1' });
     // console.log(server.producerRequests());
@@ -41,6 +41,6 @@ export class FormProducerComponent implements OnInit {
       ''
     );
 
-    console.log(this.producer);
+    this.server.registerProducer(this.producer.user,this.producer.email,this.producer.password,this.producer.id,this.producer.name,this.producer.lastName,this.producer.lastName,this.producerForm.value.location.newProducerProvince ,this.producerForm.value.location.newProducerCanton,this.producerForm.value.location.newProducerDistrict,"01","01","2000",this.producer.phone,this.producer.sinpe,this.producer.deliveryLocation)
   }
 }

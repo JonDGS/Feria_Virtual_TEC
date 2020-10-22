@@ -1,5 +1,7 @@
+import { ServerService } from './../../server.service';
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {NgForm} from '@angular/forms';
+import { Server } from 'http';
 import {Client} from '../../models/client.model';
 import {Producer} from '../../models/producer.model';
 
@@ -13,7 +15,7 @@ export class ClientFormComponent implements OnInit {
   client: Client;
   address;
 
-  constructor() { }
+  constructor(public server: ServerService) { }
 
   ngOnInit(): void {
   }
@@ -31,10 +33,13 @@ export class ClientFormComponent implements OnInit {
       this.clientForm.value.newClientBirthday,
       this.clientForm.value.newClientPhone,
       this.clientForm.value.newClientUsername,
-      this.clientForm.value.newClientPassword
+      this.clientForm.value.newClientPassword,
+      this.clientForm.value.newClientEmail
     );
 
-    console.log(this.client);
+    this.server.registerClient(this.client.user,this.clientForm.value.newClientEmail,this.client.password,this.client.id,this.client.name,this.client.lastName,this.client.lastName,this.clientForm.value.location.newProducerProvince ,this.clientForm.value.location.newProducerCanton,this.clientForm.value.location.newProducerDistrict,"01","01","2000",this.client.phone)
+
+    
   }
 
 }

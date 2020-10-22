@@ -46,11 +46,30 @@ export class ServerService {
     return this.producerList.slice();
   }
 
-  register(){
-    this.http.post('http://localhost:55172/api/Register/Admin?user=sergio&email=sergio@admin.com&password=hola1234',"").subscribe(response=>{
+  //This method return the list of pending sellers 
+  getPendingProducers(){
+    // return this.http.get(`http://localhost:55172/api/Database/Sellers/Pending`)
+
+  }
+
+  //This method post the accpeted or declined seller request
+  pendingRequest(log: string){
+    console.log(log);
+  }
+
+  registerProducer(user,email,password,cedula,realName,lastName1,lastName2,provincia,canton,distrito,month,day,year,phoneNumber,sinpe,lugarDeEntrega){
+    this.http.post(`http://localhost:55172/api/Register/Seller?user=${user}&email=${email}&password=${password}&cedula=${cedula}&realName=${realName}&lastName1=${lastName1}&lastName2=${lastName2}&provincia=${provincia}&canton=${canton}&distrito=${distrito}&month=${month}&day=${day}&year=${year}&phoneNumber=${phoneNumber}&sinpe=${sinpe}&lugarDeEntrega=${lugarDeEntrega}`,"").subscribe(response=>{
       console.log(response)
     })
   }
+
+  registerClient(user,email,password,cedula,realName,lastName1,lastName2,provincia,canton,distrito,month,day,year,phoneNumber){
+    this.http.post(`http://localhost:55172/api/Register/Client?user=${user}&email=${email}&password=${password}&cedula=${cedula}&realName=${realName}&lastName1=${lastName1}&lastName2=${lastName2}&provincia=${provincia}&canton=${canton}&distrito=${distrito}&month=${month}&day=${day}&year=${year}&phoneNumber=${phoneNumber}`,"").subscribe(response=>{
+      console.log(response)
+    })
+  }
+
+
   login(username,email,password){
      this.http.post(`http://localhost:55172/api/LogIn?user=${username}&email=${email}&password=${password}`,"").subscribe(res=>{
       console.log(res);

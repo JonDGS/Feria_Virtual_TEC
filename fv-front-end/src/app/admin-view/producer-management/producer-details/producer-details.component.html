@@ -2,13 +2,30 @@
   <H4>Producer details</H4>
 </div>
 <div class="row">
-  ID: {{producer.name}} <br>
-  Name: {{producer.name}} {{producer.lastName}} <br>
-  Address: {{producer.address}} <br>
-  Birthday: {{producer.birthday}} <br>
-  Phone: {{producer.phone}} <br>
-  SINPE: {{producer.sinpe}} <br>
-  Delivery location: {{producer.deliveryLocation}} <br>
-  User: {{producer.user}} <br>
-  Password: {{producer.password}}
+  ID: {{ producer.name }} <br />
+  Name: {{ producer.name }} {{ producer.lastName }} <br />
+  Address: {{ producer.address }} <br />
+  Birthday: {{ producer.birthday }} <br />
+  Phone: {{ producer.phone }} <br />
+  SINPE: {{ producer.sinpe }} <br />
+  Delivery location: {{ producer.deliveryLocation }} <br />
+  User: {{ producer.user }} <br />
+  Password: {{ producer.password }}
+</div>
+
+<div class="row">
+  <button
+    class="btn btn-success"
+    style="margin: 10px"
+    (click)="buttonsRequets('accepted')"
+  >
+    Acceptar
+  </button>
+  <button
+    class="btn btn-danger"
+    style="margin: 10px"
+    (click)="buttonsRequets('noaccepted')"
+  >
+    Rechazar
+  </button>
 </div>

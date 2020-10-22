@@ -1,9 +1,12 @@
-<form class="form-producer" (ngSubmit)="onSubmitClient()" #newClientForm="ngForm" >
+<form
+  class="form-producer"
+  (ngSubmit)="onSubmitClient()"
+  #newClientForm="ngForm"
+>
   <h1>Solicitudes para Provedores</h1>
   <div class="from-group" ngModelGroup="fullName">
     <div class="row">
       <div class="col-md-6 mb-3">
-
         <!--Name-->
         <input
           type="text"
@@ -11,10 +14,10 @@
           placeholder="Nombre"
           name="newClientName"
           ngModel
-          required/>
+          required
+        />
       </div>
       <div class="col-md-6 mb-3">
-
         <!--Last Name-->
         <input
           type="text"
@@ -22,14 +25,14 @@
           placeholder="Apellido"
           name="newClientLastName"
           ngModel
-          required/>
+          required
+        />
       </div>
     </div>
   </div>
   <div class="form-group">
     <div class="row">
       <div class="col-md-6">
-
         <!--ID-->
         <input
           type="text"
@@ -37,10 +40,10 @@
           placeholder="Cédula"
           name="newClientID"
           ngModel
-          required/>
+          required
+        />
       </div>
       <div class="col-md-6">
-
         <!--Birthday-->
         <input
           class="form-control birthdate"
@@ -49,14 +52,14 @@
           data-date-split-input="true"
           name="newClientBirthday"
           ngModel
-          required/>
+          required
+        />
       </div>
     </div>
   </div>
   <div class="form-group" ngModelGroup="location">
     <div class="row">
       <div class="col-md">
-
         <!--Province-->
         <input
           type="text"
@@ -64,10 +67,10 @@
           placeholder="Provincia"
           name="newClientProvince"
           ngModel
-          required/>
+          required
+        />
       </div>
       <div class="col-md">
-
         <!--Canton-->
         <input
           type="text"
@@ -75,10 +78,10 @@
           placeholder="Cantón"
           name="newClientCanton"
           ngModel
-          required/>
+          required
+        />
       </div>
       <div class="col-md">
-
         <!--District-->
         <input
           type="text"
@@ -86,14 +89,14 @@
           placeholder="Distrito"
           name="newClientDistrict"
           ngModel
-          required/>
+          required
+        />
       </div>
     </div>
   </div>
   <div class="form-group">
     <div class="row">
       <div class="col">
-
         <!--Phone-->
         <input
           type="text"
@@ -101,9 +104,21 @@
           placeholder="Teléfono"
           name="newClientPhone"
           ngModel
-          required/>
+          required
+        />
       </div>
     </div>
+  </div>
+  <!--Email-->
+  <div class="form-group">
+    <input
+      type="email"
+      class="form-control"
+      placeholder="Correo"
+      ngModel
+      name="newClientEmail"
+      required
+    />
   </div>
   <div class="form-group">
     <div class="row">
@@ -121,11 +136,11 @@
             placeholder="Username"
             name="newClientUsername"
             ngModel
-            required/>
+            required
+          />
         </div>
       </div>
       <div class="col">
-
         <!--Password-->
         <input
           type="password"
@@ -133,7 +148,8 @@
           placeholder="contraseña"
           name="newClientPassword"
           ngModel
-          required/>
+          required
+        />
       </div>
     </div>
   </div>
@@ -142,7 +158,10 @@
       <button
         class="btn btn-success"
         type="submit"
-        [disabled]="!newClientForm.valid">Registrarse</button>
+        [disabled]="!newClientForm.valid"
+      >
+        Registrarse
+      </button>
     </div>
   </div>
 </form>
