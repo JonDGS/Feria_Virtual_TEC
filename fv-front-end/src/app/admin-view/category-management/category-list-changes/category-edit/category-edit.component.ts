@@ -5,11 +5,13 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './category-edit.component.html',
   styleUrls: ['./category-edit.component.css']
 })
+/**
+ * This component is used for editing the the available categories
+ */
 export class CategoryEditComponent implements OnInit {
 
   constructor() { }
 
   ngOnInit(): void {
   }
-
 }

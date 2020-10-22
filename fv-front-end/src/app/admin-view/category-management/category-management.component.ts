@@ -5,6 +5,9 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './category-management.component.html',
   styleUrls: ['./category-management.component.css']
 })
+/**
+ * This component is used for the admin to manage the categories of the products
+ */
 export class CategoryManagementComponent implements OnInit {
 
   constructor() { }
