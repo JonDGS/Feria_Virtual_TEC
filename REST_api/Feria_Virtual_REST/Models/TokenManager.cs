@@ -1,17 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Web;
 
 namespace Feria_Virtual_REST.Models
 {
     public static class TokenManager
     {
-        
+
         public static LinkedList<TokenNode> tokens = new LinkedList<TokenNode>();
 
-        
+
         /**
          * Description: Generates a token for a given user
          * Parameters:
@@ -34,8 +32,8 @@ namespace Feria_Virtual_REST.Models
          */
         public static bool doesUserHasToken(string username)
         {
-            
-            foreach(TokenNode tokenNode in tokens)
+
+            foreach (TokenNode tokenNode in tokens)
             {
                 if (tokenNode.getUsername().Equals(username))
                 {

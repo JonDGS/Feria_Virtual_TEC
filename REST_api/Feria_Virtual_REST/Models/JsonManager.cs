@@ -1,12 +1,7 @@
-﻿using Microsoft.SqlServer.Server;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Web;
 
 namespace Feria_Virtual_REST.Models
 {
@@ -73,10 +68,12 @@ namespace Feria_Virtual_REST.Models
         * Parameters: Linked list that contains all the products
         * Return: none
         */
-        public static void saveProduct(LinkedList<Product> products) {
+        public static void saveProduct(LinkedList<Product> products)
+        {
             List<Product> listProducts = new List<Product>();
 
-            foreach (Product product in products) {
+            foreach (Product product in products)
+            {
                 listProducts.Add(product);
             }
             string resultJsonProducts = JsonConvert.SerializeObject(listProducts);
@@ -121,14 +118,14 @@ namespace Feria_Virtual_REST.Models
         */
         public static LinkedList<User> retrieveUsers()
         {
-            
+
             List<Admin> listAdmins = JsonConvert.DeserializeObject<List<Admin>>(File.ReadAllText(@pathToProjectAdmin));
             List<Client> listClients = JsonConvert.DeserializeObject<List<Client>>(File.ReadAllText(@pathToProjectClient));
             List<Seller> listSellers = JsonConvert.DeserializeObject<List<Seller>>(File.ReadAllText(@pathToProjectSeller));
 
             LinkedList<User> tempUsers = new LinkedList<User>();
 
-            if(listAdmins is List<Admin>)
+            if (listAdmins is List<Admin>)
             {
                 foreach (User user in listAdmins)
                 {
@@ -164,7 +161,8 @@ namespace Feria_Virtual_REST.Models
         {
 
             List<Product> listProducts = JsonConvert.DeserializeObject<List<Product>>(File.ReadAllText(@pathToProjectProduct));
-            if (listProducts is List<Product>) {
+            if (listProducts is List<Product>)
+            {
                 LinkedList<Product> tempProducts = new LinkedList<Product>();
 
                 foreach (Product product in listProducts)
@@ -232,7 +230,7 @@ namespace Feria_Virtual_REST.Models
         {
 
             List<Product> listProduct = JsonConvert.DeserializeObject<List<Product>>(productsListInJsonFormat);
-            
+
             return listProduct;
         }
         /*
@@ -242,7 +240,7 @@ namespace Feria_Virtual_REST.Models
         */
         public static string convertListToJson(List<Order> assignedOrderList)
         {
-            
+
             string listOrderInJson = JsonConvert.SerializeObject(assignedOrderList);
 
             return listOrderInJson;
@@ -264,7 +262,7 @@ namespace Feria_Virtual_REST.Models
         {
             List<Seller> sellers = JsonConvert.DeserializeObject<List<Seller>>(File.ReadAllText(@pathToProjectSeller));
 
-            if(sellers is List<Seller>)
+            if (sellers is List<Seller>)
             {
                 return sellers;
             }

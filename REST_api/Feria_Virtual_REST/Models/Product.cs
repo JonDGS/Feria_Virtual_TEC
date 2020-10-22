@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace Feria_Virtual_REST.Models
+﻿namespace Feria_Virtual_REST.Models
 {
     public class Product
     {
@@ -16,7 +11,8 @@ namespace Feria_Virtual_REST.Models
         public int sold;
         public int revenue;
 
-        public Product(string pName, string category, int price, string packageMode, int availability, string seller){
+        public Product(string pName, string category, int price, string packageMode, int availability, string seller)
+        {
             this.pName = pName;
             this.category = category;
             this.price = price;

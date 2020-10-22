@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace Feria_Virtual_REST.Models
+﻿namespace Feria_Virtual_REST.Models
 {
     public class Seller : User
     {
@@ -16,6 +11,7 @@ namespace Feria_Virtual_REST.Models
         public string phoneNumber;
         public string sinpe;
         public string lugarDeEntrega;
+        public int admitted;
 
         public Seller(string username, string email, string password, string cedula, string realName, string lastName1, string lastName2,
             string provincia, string canton, string distrito, int month, int day, int year, string phoneNumber, string sinpe, string lugarDeEntrega) : base(username, email, password)
@@ -30,6 +26,12 @@ namespace Feria_Virtual_REST.Models
             this.phoneNumber = phoneNumber;
             this.sinpe = sinpe;
             this.lugarDeEntrega = lugarDeEntrega;
+            this.admitted = 1;
+        }
+
+        public void setAdmitted(int status)
+        {
+            this.admitted = status;
         }
     }
 }

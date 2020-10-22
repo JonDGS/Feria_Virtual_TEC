@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
+﻿using System.Security.Cryptography;
 using System.Text;
-using System.Web;
 
 namespace Feria_Virtual_REST.Models
 {
@@ -21,7 +17,7 @@ namespace Feria_Virtual_REST.Models
                 return algorithm.ComputeHash(Encoding.UTF8.GetBytes(inputString));
         }
 
-        
+
         /**
          * Description: Generates a hash string for the source string
          * Parameters:
