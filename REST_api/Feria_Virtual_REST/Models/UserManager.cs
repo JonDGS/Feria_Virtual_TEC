@@ -1,13 +1,5 @@
-﻿using Microsoft.Ajax.Utilities;
-using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Threading;
-using System.Web;
-using System.Web.UI.WebControls;
 
 namespace Feria_Virtual_REST.Models
 {
@@ -32,8 +24,10 @@ namespace Feria_Virtual_REST.Models
          */
         public static bool deleteUser(string usernameToDelete)
         {
-            foreach(User user in registerUsers) {
-                if (user.username.Equals(usernameToDelete)) {
+            foreach (User user in registerUsers)
+            {
+                if (user.username.Equals(usernameToDelete))
+                {
                     registerUsers.Remove(user);
                     JsonManager.saveUsers(registerUsers);
                     return true;
@@ -80,7 +74,7 @@ namespace Feria_Virtual_REST.Models
          */
         public static bool checkUserAvailability(string user)
         {
-            foreach(User currentUser in registerUsers)
+            foreach (User currentUser in registerUsers)
             {
                 if (currentUser.getUsername().Equals(user))
                 {
@@ -120,7 +114,7 @@ namespace Feria_Virtual_REST.Models
          */
         public static bool doesUsernameMatchesType(string username, string type)
         {
-            foreach(User user in registerUsers)
+            foreach (User user in registerUsers)
             {
                 if (user.getUsername().Equals(username))
                 {
@@ -144,7 +138,7 @@ namespace Feria_Virtual_REST.Models
         {
             if (!checkUserAvailability(user))
             {
-                foreach(User currentUser in registerUsers)
+                foreach (User currentUser in registerUsers)
                 {
                     if (currentUser.getUsername().Equals(user))
                     {
@@ -156,10 +150,10 @@ namespace Feria_Virtual_REST.Models
             return null;
         }
 
-        
+
         public static User getUser(string user)
         {
-            foreach(User currentUser in registerUsers)
+            foreach (User currentUser in registerUsers)
             {
                 if (currentUser.getUsername().Equals(user))
                 {
@@ -333,10 +327,10 @@ namespace Feria_Virtual_REST.Models
         public static List<Seller> getSellers()
         {
             List<Seller> tempList = new List<Seller>();
-            
-            foreach(User user in registerUsers)
+
+            foreach (User user in registerUsers)
             {
-                if(user.type == "Seller")
+                if (user.type == "Seller")
                 {
                     tempList.Add((Seller)user);
                 }
@@ -365,8 +359,8 @@ namespace Feria_Virtual_REST.Models
         public static List<Seller> getPendingSellers()
         {
             List<Seller> pending = new List<Seller>();
-            
-            foreach(User user in registerUsers)
+
+            foreach (User user in registerUsers)
             {
                 Seller currentSeller = (Seller)user;
 
