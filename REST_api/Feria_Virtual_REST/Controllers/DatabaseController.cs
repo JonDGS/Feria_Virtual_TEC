@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Http;
 using System.Web.UI.WebControls;
 using System.Web.Http.Cors;
+using Microsoft.AspNetCore.Cors;
 
 namespace Feria_Virtual_REST.Controllers
 {
