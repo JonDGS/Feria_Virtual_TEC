@@ -361,5 +361,40 @@ namespace Feria_Virtual_REST.Models
             return null;
 
         }
+
+        public static List<Seller> getPendingSellers()
+        {
+            List<Seller> pending = new List<Seller>();
+            
+            foreach(User user in registerUsers)
+            {
+                Seller currentSeller = (Seller)user;
+
+                if (currentSeller.admitted.Equals(1))
+                {
+                    pending.Add(currentSeller);
+                }
+            }
+
+            return pending;
+        }
+
+        public static bool admiteSeller(string username, string status)
+        {
+            if (!UserManager.checkUserAvailability(username))
+            {
+                switch (status)
+                {
+                    case "accept":
+                        UserManager.getSeller(username).setAdmitted(0);
+                        return true;
+                    case "reject":
+                        UserManager.getSeller(username).setAdmitted(1);
+                        return true;
+                }
+            }
+
+            return false;
+        }
     }
 }
