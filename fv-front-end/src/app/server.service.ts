@@ -37,9 +37,15 @@ export class ServerService {
     return this.producersRequestsObj;
   }
 
-  addCategory(category){
+  addCategory(category: Category){
     this.categoryList.push(category);
     this.categoryID++;
+
+    this.http.post(`http://localhost:55172/api/Database/Create/${category.name}`, '').subscribe(
+      res=>{
+        console.log(res);
+      }
+    )
   }
 
   getProducers(){
@@ -61,7 +67,7 @@ export class ServerService {
   products(){
     return this.http.get(`http://localhost:55172/api/Database/Products?token=${this.token}`)
   }
-  
+
   addProduct(p: Product){
     this.http.post(`http://localhost:55172/api/Database/Create/Product?pName=${p.name}&category=${p.category.name}&price=${p.price}&packageMode=${p.unit}&availability=${p.availability}&token=ea4113cc-f52e-4d8c-a576-b372376d4c17`,"").subscribe(
       res=>{
