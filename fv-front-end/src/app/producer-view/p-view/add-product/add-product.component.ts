@@ -10,6 +10,9 @@ import {ServerService} from '../../../server.service';
   templateUrl: './add-product.component.html',
   styleUrls: ['./add-product.component.css']
 })
+/**
+ * This component is used for adding a new product
+ */
 export class AddProductComponent implements OnInit {
   @ViewChild('newProductForm') productForm: NgForm;
   product: Product;
@@ -19,6 +22,9 @@ export class AddProductComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /**
+   * This method is called when a new product form is submitted
+   */
   onSubmit(){
     this.product = new Product(
       this.productForm.value.newProductName,

@@ -8,6 +8,9 @@ import {Producer} from '../../models/producer.model';
   templateUrl: './form-producer.component.html',
   styleUrls: ['./form-producer.component.css'],
 })
+/**
+ * This component is used for registering a new producer
+ */
 export class FormProducerComponent implements OnInit {
   @ViewChild('newProducerForm') producerForm: NgForm;
   producer: Producer;
@@ -21,6 +24,9 @@ export class FormProducerComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  /**
+   * This method is called when the form for registering a new producer is submitted
+   */
   onSubmit(){
     // tslint:disable-next-line:max-line-length
     this.address = this.producerForm.value.location.newProducerProvince + ', ' +

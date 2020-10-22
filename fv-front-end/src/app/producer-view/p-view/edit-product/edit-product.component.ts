@@ -7,6 +7,9 @@ import {Category} from '../../../models/category.model';
   templateUrl: './edit-product.component.html',
   styleUrls: ['./edit-product.component.css']
 })
+/**
+ * This component is used for editing a product
+ */
 export class EditProductComponent implements OnInit {
   @Input() product: Product;
 
