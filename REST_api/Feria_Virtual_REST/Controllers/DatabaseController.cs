@@ -79,7 +79,7 @@ namespace Feria_Virtual_REST.Controllers
             return Request.CreateResponse(HttpStatusCode.Unauthorized);
         }
 
-            [Route("api/Database/GetOrdersFrom/{who}")]
+        [Route("api/Database/GetOrdersFrom/{who}")]
         /*
          * Description: Show all the order assigned to a seller
          * Parameters: who -> seller
@@ -92,8 +92,10 @@ namespace Feria_Virtual_REST.Controllers
             {
                 LinkedList<Order> currentOrderList = OrderManager.registeredOrders;
                 List<Order> orderAssignedToSeller = new List<Order>();
-                foreach (Order order in currentOrderList) {
-                    if (order.sellerAssigned.Equals(who)) {
+                foreach (Order order in currentOrderList)
+                {
+                    if (order.sellerAssigned.Equals(who))
+                    {
                         orderAssignedToSeller.Add(order);
 
                     }
@@ -188,7 +190,7 @@ namespace Feria_Virtual_REST.Controllers
          * Return: HttpStatusCode
          */
         [Route("api/Database/Delete/Sellers/{seller}")]
-        public HttpResponseMessage deleteUser(string seller,[FromUri] string token)
+        public HttpResponseMessage deleteUser(string seller, [FromUri] string token)
         {
             string username = TokenManager.getUsernameFromToken(token);
             if (UserManager.doesUsernameMatchesType(username, "Admin"))
@@ -290,6 +292,34 @@ namespace Feria_Virtual_REST.Controllers
                 }
 
                 return Request.CreateResponse(HttpStatusCode.NotFound, "User was not found");
+            }
+
+            return Request.CreateResponse(HttpStatusCode.Unauthorized);
+        }
+
+        [Route("api/Database/Sellers/Pending")]
+        public HttpResponseMessage getPendingSellers([FromUri] string token)
+        {
+            if (UserManager.doesUsernameMatchesType(TokenManager.getUsernameFromToken(token), "Admin"))
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, JsonConvert.SerializeObject(UserManager.getPendingSellers()));
+            }
+
+            return Request.CreateResponse(HttpStatusCode.Unauthorized);
+        }
+
+        [Route("api/Database/{seller}/{status}")]
+        public HttpResponseMessage changeSellerStatus(string seller, string status, [FromUri] string token)
+        {
+
+            if (UserManager.doesUsernameMatchesType(TokenManager.getUsernameFromToken(token), "Admin"))
+            {
+                if (UserManager.admiteSeller(seller, status))
+                {
+                    return Request.CreateResponse(HttpStatusCode.Accepted);
+                }
+
+                return Request.CreateResponse(HttpStatusCode.NotFound);
             }
 
             return Request.CreateResponse(HttpStatusCode.Unauthorized);
