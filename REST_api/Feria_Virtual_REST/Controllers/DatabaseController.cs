@@ -255,6 +255,16 @@ namespace Feria_Virtual_REST.Controllers
             return Request.CreateResponse(HttpStatusCode.Unauthorized);
 
         }
+
+        /**
+         * Description: Gets report for the seller
+         * Parameters:
+         * - it: who is using it
+         * - attribute: attribute to change
+         * - topNumber: List of top number
+         * - token: verification token
+         * Return: HttpStatusCode
+         */
         [Route("api/Database/Report/{it}/{attribute}/")]
         public HttpResponseMessage getReport(string it, string attribute, [FromUri] int topNumber, [FromUri] string token)
         {
@@ -275,6 +285,13 @@ namespace Feria_Virtual_REST.Controllers
             return Request.CreateResponse(HttpStatusCode.Unauthorized);
         }
 
+        /**
+         * Description: Return a seller info
+         * Parameters:
+         * - who: username of seller 
+         * - token: token from admin
+         * Return: HttpResponseMessage
+         */
         [Route("api/Database/Seller/{who}")]
         public HttpResponseMessage getSeller(string who, [FromUri] string token)
         {
@@ -293,6 +310,12 @@ namespace Feria_Virtual_REST.Controllers
             return Request.CreateResponse(HttpStatusCode.Unauthorized);
         }
 
+        /**
+         * Description: Gets all seller pending of approval
+         * Parameters:
+         * - token: verification token
+         * Return: HttpResponseMessage
+         */
         [Route("api/Database/Sellers/Pending")]
         public HttpResponseMessage getPendingSellers([FromUri] string token)
         {
@@ -304,6 +327,15 @@ namespace Feria_Virtual_REST.Controllers
             return Request.CreateResponse(HttpStatusCode.Unauthorized);
         }
 
+
+        /**
+         * Description: Approves or rejects a seller
+         * Parameters:
+         * - seller: seller username
+         * - status: status for approval
+         * - token: verification token
+         * Return: HttpResponseMessage
+         */
         [Route("api/Database/{seller}/{status}")]
         public HttpResponseMessage changeSellerStatus(string seller, string status, [FromUri] string token)
         {
