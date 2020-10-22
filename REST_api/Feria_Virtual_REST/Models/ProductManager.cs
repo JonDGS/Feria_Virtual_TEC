@@ -274,6 +274,12 @@ namespace Feria_Virtual_REST.Models
                 }
             }
 
+            if ((number - sortedProducts.Count()) >= 0)
+            {
+                return sortedProducts.GetRange(0, sortedProducts.Count());
+            }
+
+
             return sortedProducts.GetRange(0, number);
         }
 
