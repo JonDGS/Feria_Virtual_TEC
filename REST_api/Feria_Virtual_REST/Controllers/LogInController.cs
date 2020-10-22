@@ -9,6 +9,14 @@ namespace Feria_Virtual_REST.Controllers
     [EnableCors(origins: "http://localhost:4200", headers: "*", methods: "*")]
     public class LogInController : ApiController
     {
+        /**
+         * Description: Log In a user
+         * Parameters:
+         * - user: username
+         * - email: user's email
+         * - password: password for the user
+         * Return: returns a token for the user to use accross the rest api
+         */
         // POST: api/LogIn/
         public HttpResponseMessage logInCredencials([FromUri] string user, [FromUri] string email, [FromUri] string password)
         {
