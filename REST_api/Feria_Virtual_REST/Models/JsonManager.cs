@@ -301,5 +301,12 @@ namespace Feria_Virtual_REST.Models
 
             return orders;
         }
+
+        public static string getCategoryJSON_String()
+        {
+            string categories = File.ReadAllText(@pathToProjectCategory);
+
+            return categories;
+        }
     }
 }

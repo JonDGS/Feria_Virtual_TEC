@@ -11,7 +11,7 @@ namespace Feria_Virtual_REST.Controllers
 {
     public class CategoryController : ApiController
     {
-        [Route("api/Database/Create/Category")]
+        [Route("api/Create/Category")]
         /*
         * Description: Http request for adding a category
         * Parameters: All the atributes of Category class
@@ -36,7 +36,7 @@ namespace Feria_Virtual_REST.Controllers
             return Request.CreateResponse(HttpStatusCode.Unauthorized);
 
         }
-        [Route("api/Database/GetCategories")]
+        [Route("api/GetCategories")]
         /*
          * Description: Show all the categories
          * Parameters: token
