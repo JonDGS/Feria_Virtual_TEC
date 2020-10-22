@@ -1,4 +1,4 @@
-<div class="selector-buttons">
+<div class="selector-buttons" *ngIf="this.server.token == null">
   <div class="row">
     <div class="col">
       <button class="btn btn-primary" (click)="onSelectView('login')">
@@ -13,6 +13,8 @@
   </div>
 </div>
 
-<login-producer *ngIf="currentActivate === 'login'"></login-producer>
+<login-producer
+  *ngIf="this.server.token == null && currentActivate === 'login'"
+></login-producer>
 <form-producer *ngIf="currentActivate === 'form'"></form-producer>
-<p-view *ngIf="currentActivate === 'producer-users'"></p-view>
+<p-view *ngIf="this.server.token != null"></p-view>

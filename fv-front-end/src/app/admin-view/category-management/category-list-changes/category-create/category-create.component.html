@@ -1,17 +1,15 @@
-<form (ngSubmit)="onSubmitCategory()" #newCategoryForm="ngForm">
-  <div class="form-group">
-    <label for="categoryName">Nombre de la categoria</label>
-    <input
-      type="text"
-      class="form-control"
-      id="categoryName"
-      placeholder="Verduras"
-      ngModel
-      name="newCategoryName"
-      required>
+<div class="row">
+  <div class="col">
+    <input type="text"
+           class="form-control"
+           placeholder="Category Name"
+           #nameInput>
   </div>
-  <button class="btn btn-success"
-          type="submit"
-          [disabled]="!newCategoryForm.valid">Añadir</button>
-</form>
-
+  <div class="col">
+    <button class="btn btn-success"
+            type="button"
+            (click)="onAddCategory()">
+      Add
+    </button>
+  </div>
+</div>

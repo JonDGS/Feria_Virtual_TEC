@@ -12,7 +12,7 @@ export class ServerService {
   producersRequestsObj: { id: number; name: string }[] = [];
 
   //token for users login
-  private token;
+  public token;
 
   // Admin view
   @Output() producerSelected = new EventEmitter<Producer>();
@@ -52,7 +52,7 @@ export class ServerService {
     })
   }
   login(username,email,password){
-    this.http.post(`http://localhost:55172/api/LogIn?user=${username}&email=${email}&password=${password}`,"").subscribe(res=>{
+     this.http.post(`http://localhost:55172/api/LogIn?user=${username}&email=${email}&password=${password}`,"").subscribe(res=>{
       console.log(res);
       this.token = res;
     })

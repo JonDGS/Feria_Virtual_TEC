@@ -1,3 +1,4 @@
+import { ServerService } from './../../server.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,8 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./selector.component.css'],
 })
 export class SelectorComponent {
-  currentActivate = 'producer-users';
-  constructor() {}
+  currentActivate = 'login';
+  constructor(public server : ServerService) {}
 
   onSelectView(view: string) {
     this.currentActivate = view;
