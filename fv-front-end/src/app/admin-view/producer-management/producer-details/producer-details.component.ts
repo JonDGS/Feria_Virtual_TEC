@@ -7,6 +7,9 @@ import {ServerService} from '../../../server.service';
   templateUrl: './producer-details.component.html',
   styleUrls: ['./producer-details.component.css']
 })
+/**
+ * This component shows the more detailed info of a selected producer form the producer list
+ */
 export class ProducerDetailsComponent implements OnInit {
   @Input() producer: Producer;
 

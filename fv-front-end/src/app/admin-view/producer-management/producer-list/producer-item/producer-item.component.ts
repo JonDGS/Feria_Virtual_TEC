@@ -7,6 +7,9 @@ import {ServerService} from '../../../../server.service';
   templateUrl: './producer-item.component.html',
   styleUrls: ['./producer-item.component.css']
 })
+/**
+ * This is an item of the producer list and shows some basic info of the producer that it contains
+ */
 export class ProducerItemComponent implements OnInit {
   @Input() producer: Producer;
 
@@ -15,6 +18,9 @@ export class ProducerItemComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /**
+   * Ths method emits an event when a producer item from the producer list was selected
+   */
   onSelected(){
     this.serverService.producerSelected.emit(this.producer);
   }

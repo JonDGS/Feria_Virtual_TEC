@@ -62,6 +62,12 @@ namespace Feria_Virtual_REST.Models
             return true;
         }
 
+        /**
+         * Description: Gets the products from an specific seller
+         * Parameters:
+         * - user: username of said user
+         * Return: Said user's products
+         */
         public static List<Product> getProductsBasedOnSeller(string user)
         {
             List<Product> sellerProducts = new List<Product>();
@@ -82,6 +88,13 @@ namespace Feria_Virtual_REST.Models
             return sellerProducts;
         }
 
+        /**
+         * Description: Sorts the products based on an attribute
+         * Parameters:
+         * - products: list of products
+         * - attribute: attribute
+         * Return: sorted list
+         */
         public static List<Product> sortProductListBy(List<Product> products, string attribute)
         {
             if (products.Count == 1)
@@ -140,6 +153,14 @@ namespace Feria_Virtual_REST.Models
         }
 
 
+        /**
+         * Description: Gets the top n products in a given attribute
+         * Parameters:
+         * - user: username of the seller
+         * - attribute: attribute of the seller
+         * - numberOfTop: n number determining how many products are needed
+         * Return: Top n products
+         */
         public static List<Product> getTopN_ProductsPerSellerByAttribute(string user, string attribute, int numberOfTop)
         {
             List<Product> sellerProducts = getProductsBasedOnSeller(user);
@@ -176,6 +197,13 @@ namespace Feria_Virtual_REST.Models
 
         }
 
+        /**
+         * Description: sorts sellers by an attribute
+         * Parameters:
+         * - sellers: sellers list
+         * - atttribute: attribute to organize with
+         * Return: Sorted Sellers
+         */
         public static List<SellerSortingInfo> sortSellerListBy(List<Seller> sellers, string attribute)
         {
             if (sellers.Count() == 1)
@@ -216,6 +244,13 @@ namespace Feria_Virtual_REST.Models
             return sortedSellers;
         }
 
+        /**
+         * Description: Get the top n Seller by an attribute
+         * Parameters:
+         * - attribute: attribute to sort by
+         * - numberOfTop: n requiere
+         * Return: The top n sellers
+         */
         public static List<SellerSortingInfo> getTopN_SellerByAttribute(string attribute, int numberOfTop)
         {
             List<Seller> sellers = UserManager.getSellers();
@@ -223,6 +258,13 @@ namespace Feria_Virtual_REST.Models
             return sortSellerListBy(sellers, attribute).GetRange(0, numberOfTop);
         }
 
+        /**
+         * Description: Get the top n Seller by an attribute
+         * Parameters:
+         * - attribute: attribute to sort by
+         * - number: n requiere
+         * Return: The top n sellers
+         */
         public static List<Product> getTopN_Products(string attribute, int number)
         {
             List<Product> sortedProducts = new List<Product>();

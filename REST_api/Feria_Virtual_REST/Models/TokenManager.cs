@@ -84,6 +84,12 @@ namespace Feria_Virtual_REST.Models
             return null;
         }
 
+        /**
+         * Description: Generates a random ID for an order
+         * Parameters:
+         * - size: size of string
+         * Return: Generate ID
+         */
         public static string generateRandomOrderID(int size)
         {
             StringBuilder builder = new StringBuilder();

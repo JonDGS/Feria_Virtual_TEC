@@ -13,6 +13,7 @@ namespace Feria_Virtual_REST.Models
         private static string pathToProjectSeller = AppDomain.CurrentDomain.BaseDirectory + "/Database/sellers.json";
         private static string pathToProjectProduct = AppDomain.CurrentDomain.BaseDirectory + "/Database/products.json";
         private static string pathToProjectOrder = AppDomain.CurrentDomain.BaseDirectory + "/Database/orders.json";
+        private static string pathToProjectCategory = AppDomain.CurrentDomain.BaseDirectory + "/Database/categories.json";
         /**
          * Description: Save current users to a json file in database
          * Parameters:
@@ -217,6 +218,42 @@ namespace Feria_Virtual_REST.Models
             string listOrderInJson = JsonConvert.SerializeObject(assignedProductList);
 
             return listOrderInJson;
+        }
+
+        /*
+        * Description: Retrieve the products form DB
+        * Parameters: None
+        * Return: All the products loaded in DB
+        */
+        public static LinkedList<Category> retrieveCategories()
+        {
+
+            List<Category> listCategories = JsonConvert.DeserializeObject<List<Category>>(File.ReadAllText(pathToProjectCategory));
+            if (listCategories is List<Category>)
+            {
+                LinkedList<Category> tempCategories = new LinkedList<Category>();
+
+                foreach (Category category in listCategories)
+                {
+                    tempCategories.AddLast(category);
+
+                }
+
+                return tempCategories;
+            }
+            return new LinkedList<Category>();
+        }
+
+        public static void saveCategory(LinkedList<Category> categories)
+        {
+            List<Category> listCategory = new List<Category>();
+
+            foreach (Category category in categories)
+            {
+                listCategory.Add(category);
+            }
+            string resultJsonCategory = JsonConvert.SerializeObject(listCategory);
+            File.WriteAllText(pathToProjectCategory, resultJsonCategory);
         }
 
         public static List<Seller> getSellers()

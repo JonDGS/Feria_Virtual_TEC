@@ -7,6 +7,9 @@ import {Category} from '../../../models/category.model';
   templateUrl: './category-list.component.html',
   styleUrls: ['./category-list.component.css']
 })
+/**
+ * This component works as a list of the available categories
+ */
 export class CategoryListComponent implements OnInit {
   public categoryL: Category[] = [];
 

@@ -373,6 +373,13 @@ namespace Feria_Virtual_REST.Models
             return pending;
         }
 
+        /**
+         * Description: Sets the value of admitted of a seller
+         * Parameters:
+         * - username: username
+         * - status: status
+         * Return: whether the seller existed or not
+         */
         public static bool admiteSeller(string username, string status)
         {
             if (!UserManager.checkUserAvailability(username))
